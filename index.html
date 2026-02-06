@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bryan Ruano Rivera | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;1,400;1,700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #fdfdfd; color: #1e293b; }
+        .serif { font-family: 'Playfair Display', serif; }
+        
+        /* Navigation Hover Logic */
+        .nav-item .dropdown { 
+            opacity: 0; visibility: hidden; transform: translateY(12px);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .nav-item:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+
+        /* Protagonist Quote Styling */
+        .quote-accent { color: #6366f1; opacity: 0.2; font-size: 8rem; line-height: 0; position: absolute; }
+        
+        /* Card Styling - Matching the "Featured Work" aesthetic */
+        .slo-card {
+            background: white;
+            border: 1px solid #f1f5f9;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .slo-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px -12px rgba(0,0,0,0.05);
+            border-color: #e2e8f0;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-xl border-b border-slate-50">
+        <div class="max-w-7xl mx-auto px-10 h-24 flex justify-between items-center">
+            <span class="text-xl font-bold tracking-tight text-slate-900 serif">My Portfolio</span>
+            <div class="flex space-x-12 text-[11px] uppercase tracking-[0.25em] font-bold text-slate-400">
+                <a href="#" class="hover:text-slate-900 transition-colors">Home</a>
+                
+                <div class="nav-item relative group">
+                    <span class="cursor-default group-hover:text-slate-900 transition-colors">MWA 1</span>
+                    <div class="dropdown absolute top-full left-0 mt-4 w-40 bg-white border border-slate-100 shadow-2xl rounded-2xl p-5 space-y-3">
+                        <a href="#mwa1-slo1" class="block hover:text-indigo-500 italic serif">slo 1</a>
+                        <a href="#mwa1-slo2" class="block hover:text-indigo-500 italic serif">slo 2</a>
+                        <a href="#mwa1-slo3" class="block hover:text-indigo-500 italic serif">slo 3</a>
+                    </div>
+                </div>
+
+                <div class="nav-item relative group">
+                    <span class="cursor-default group-hover:text-slate-900 transition-colors">MWA 2</span>
+                    <div class="dropdown absolute top-full left-0 mt-4 w-40 bg-white border border-slate-100 shadow-2xl rounded-2xl p-5 space-y-3">
+                        <a href="#mwa2-slo1" class="block hover:text-indigo-500 italic serif">slo 1</a>
+                        <a href="#mwa2-slo2" class="block hover:text-indigo-500 italic serif">slo 2</a>
+                        <a href="#mwa2-slo3" class="block hover:text-indigo-500 italic serif">slo 3</a>
+                    </div>
+                </div>
+
+                <div class="nav-item relative group">
+                    <span class="cursor-default group-hover:text-slate-900 transition-colors">MWA 3</span>
+                    <div class="dropdown absolute top-full left-0 mt-4 w-40 bg-white border border-slate-100 shadow-2xl rounded-2xl p-5 space-y-3">
+                        <a href="#mwa3-slo1" class="block hover:text-indigo-500 italic serif">slo 1</a>
+                        <a href="#mwa3-slo2" class="block hover:text-indigo-500 italic serif">slo 2</a>
+                        <a href="#mwa3-slo3" class="block hover:text-indigo-500 italic serif">slo 3</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="min-h-screen flex flex-col justify-center items-center text-center px-6">
+        <div data-aos="fade-up" data-aos-duration="1200">
+            <h1 class="serif text-7xl md:text-9xl text-slate-900 mb-8">Welcome.</h1>
+            <p class="text-slate-400 tracking-[0.5em] uppercase text-xs font-bold mb-4">Bryan Ruano Rivera</p>
+            <p class="text-slate-300 tracking-[0.2em] uppercase text-[10px] font-bold">ENG 1110 — First-Year Composition</p>
+        </div>
+    </header>
+
+    <section class="py-60 bg-slate-50/50">
+        <div class="max-w-4xl mx-auto px-10 relative text-center" data-aos="zoom-in">
+            <span class="quote-accent serif left-0 -top-10">“</span>
+            <blockquote class="serif text-5xl md:text-7xl text-slate-800 italic leading-tight relative z-10">
+                Writing is thinking on paper.
+            </blockquote>
+            <p class="mt-12 text-[12px] tracking-[0.4em] uppercase text-slate-400 font-bold">— William Zinsser</p>
+        </div>
+    </section>
+
+    <main class="max-w-7xl mx-auto px-10 py-40 space-y-60">
+        
+        <section id="mwa1">
+            <h2 class="serif text-5xl text-slate-900 mb-16" data-aos="fade-right">MWA 1</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div id="mwa1-slo1" class="slo-card h-[400px] rounded-[2rem] p-10 flex flex-col justify-end text-slate-300 font-bold tracking-widest uppercase text-[10px]">slo 1</div>
+                <div id="mwa1-slo2" class="slo-card h-[400px] rounded-[2rem] p-10 flex flex-col justify-end text-slate-300 font-bold tracking-widest uppercase text-[10px]">slo 2</div>
+                <div id="mwa1-slo3" class="slo-card h-[400px] rounded-[2rem] p-10 flex flex-col justify-end text-slate-300 font-bold tracking-widest uppercase text-[10px]">slo 3</div>
+            </div>
+        </section>
+
+        <section id="mwa2">
+            <h2 class="serif text-5xl text-slate-900 mb-16" data-aos="fade-right">MWA 2</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div id="mwa2-slo1" class="slo-card h-[400px] rounded-[2rem] p-10 flex flex-col justify-end text-slate-300 font-bold tracking-widest uppercase text-[10px]">slo 1</div>
+                <div id="mwa2-slo2" class="slo-card h-[400px] rounded-[2rem] p-10 flex flex-col justify-end text-slate-300 font-bold tracking-widest uppercase text-[10px]">slo 2</div>
+                <div id="mwa2-slo3" class="slo-card h-[400px] rounded-[2rem] p-10 flex flex-col justify-end text-slate-300 font-bold tracking-widest uppercase text-[10px]">slo 3</div>
+            </div>
+        </section>
+
+        <section id="mwa3">
+            <h2 class="serif text-5xl text-slate-900 mb-16" data-aos="fade-right">MWA 3</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div id="mwa3-slo1" class="slo-card h-[400px] rounded-[2rem] p-10 flex flex-col justify-end text-slate-300 font-bold tracking-widest uppercase text-[10px]">slo 1</div>
+                <div id="mwa3-slo2" class="slo-card h-[400px] rounded-[2rem] p-10 flex flex-col justify-end text-slate-300 font-bold tracking-widest uppercase text-[10px]">slo 2</div>
+                <div id="mwa3-slo3" class="slo-card h-[400px] rounded-[2rem] p-10 flex flex-col justify-end text-slate-300 font-bold tracking-widest uppercase text-[10px]">slo 3</div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="py-32 border-t border-slate-50 text-center">
+        <p class="text-[10px] tracking-[0.5em] uppercase text-slate-400 mb-6">Get In Touch</p>
+        <a href="mailto:ruanobry@unm.edu" class="text-slate-600 hover:text-indigo-500 font-bold border-b border-transparent hover:border-indigo-100 pb-1 transition-all">ruanobry@unm.edu</a>
+        <div class="mt-24 text-[9px] tracking-[0.3em] uppercase text-slate-300">© 2026 Bryan Ruano Rivera</div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init({ once: true, duration: 1000 });</script>
+</body>
+</html>
