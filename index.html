@@ -21,21 +21,82 @@
         /* Protagonist Quote Styling */
         .quote-accent { color: #6366f1; opacity: 0.2; font-size: 8rem; line-height: 0; position: absolute; }
         
-        /* Card Styling - Matching the "Featured Work" aesthetic */
+        /* Card Styling */
         .slo-card {
             background: white;
             border: 1px solid #f1f5f9;
             transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
         }
         .slo-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 30px 60px -12px rgba(0,0,0,0.05);
             border-color: #e2e8f0;
         }
+        
+        /* Modal/Overlay for SLO writing */
+        .slo-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px);
+            z-index: 100;
+            overflow-y: auto;
+        }
+        .slo-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .slo-content {
+            max-width: 800px;
+            width: 90%;
+            padding: 60px;
+            position: relative;
+        }
+        .close-btn {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            font-size: 2rem;
+            color: #94a3b8;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .close-btn:hover {
+            color: #1e293b;
+        }
+        
+        /* Memoir styling */
+        .memoir-text {
+            line-height: 2;
+            font-size: 1.125rem;
+            color: #334155;
+        }
+        .memoir-text p {
+            margin-bottom: 1.5rem;
+            text-indent: 2rem;
+        }
+        .memoir-text p:first-of-type {
+            text-indent: 0;
+        }
+        .memoir-text p:first-of-type::first-letter {
+            font-size: 4rem;
+            float: left;
+            line-height: 0.8;
+            padding-right: 0.5rem;
+            color: #6366f1;
+            font-family: 'Playfair Display', serif;
+        }
     </style>
 </head>
 <body>
 
+    <!-- Navigation -->
     <nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-xl border-b border-slate-50">
         <div class="max-w-7xl mx-auto px-10 h-24 flex justify-between items-center">
             <span class="text-xl font-bold tracking-tight text-slate-900 serif">My Portfolio</span>
@@ -72,6 +133,7 @@
         </div>
     </nav>
 
+    <!-- Header -->
     <header class="min-h-screen flex flex-col justify-center items-center text-center px-6">
         <div data-aos="fade-up" data-aos-duration="1200">
             <h1 class="serif text-7xl md:text-9xl text-slate-900 mb-8">Welcome.</h1>
@@ -80,9 +142,10 @@
         </div>
     </header>
 
+    <!-- Quote Section -->
     <section class="py-60 bg-slate-50/50">
         <div class="max-w-4xl mx-auto px-10 relative text-center" data-aos="zoom-in">
-            <span class="quote-accent serif left-0 -top-10">“</span>
+            <span class="quote-accent serif left-0 -top-10">"</span>
             <blockquote class="serif text-5xl md:text-7xl text-slate-800 italic leading-tight relative z-10">
                 Writing is thinking on paper.
             </blockquote>
@@ -90,69 +153,190 @@
         </div>
     </section>
 
+    <!-- Main Content -->
     <main class="max-w-7xl mx-auto px-10 py-40 space-y-60">
         
+        <!-- MWA 1 Section -->
         <section id="mwa1">
-            <h2 class="serif text-5xl text-slate-900 mb-16" data-aos="fade-right">MWA 1</h2>
+            <h2 class="serif text-5xl text-slate-900 mb-16" data-aos="fade-right">MWA 1: Memoir</h2>
+            
+            <!-- Full Memoir Draft -->
+            <div class="max-w-3xl mx-auto mb-20" data-aos="fade-up">
+                <h3 class="serif text-3xl text-slate-800 mb-2 text-center">The Power I Struggled to Concede</h3>
+                <div class="w-24 h-px bg-indigo-400 mx-auto mb-12"></div>
+                
+                <article class="memoir-text">
+                    <p>For most of my life, I believed that being sensitive was a weakness. I remember sitting in my room one evening after a long day and mentally reliving conversations. Someone had made a careless comment, and although they probably forgot about it minutes later, I continued to think about it for hours. My thoughts were loud, but the only sound in the room was the soft hum of the ceiling fan. I thought about what I had heard before: You're too personal about things. You're too emotional. You must have thicker skin.</p>
+                    
+                    <p>I discovered somewhere along the line that strength meant not being impacted. It required maintaining composure and avoiding overreaction or emotion. I therefore made an effort to become that version of myself. When something disturbed me, I stopped talking. Even when it hurt, I laughed it off. I told myself that life would be easier if I could just get tougher.</p>
+                    
+                    <p>But suppressing emotions doesn't make them disappear. It merely buried them.</p>
+                    
+                    <p>The turning point came when I began working closely with children. At first, I didn't think much about it. Help, guidance, and listening were all that was needed. But as time passed, I realized something. The children turned to me when they were distressed or feeling overburdened. They would either sit next to me in silence or discuss topics that were very important to them. They confided in me about their feelings.</p>
+                    
+                    <p>On the verge of tears, a child was upset about a trivial matter one afternoon. While others brushed it off as "not a big deal," I knelt down and listened. I could see the embarrassment on their faces as their hands clenched. Instead of telling them to calm down, I told them that it was okay to feel upset. I stayed there until their breathing slowed and their shoulders relaxed.</p>
+                    
+                    <p>I had never allowed myself to see the very trait I had tried before, but in that moment, I realized that it was the very quality I had tried to hide that was responsible for my high level of interpersonal connection. I wasn't weak because I was sensitive. It was consciousness. It was compassion. It made it possible for me to see things that others might have missed, like a change in tone, a person avoiding eye contact, or a silence that conveyed more meaning than words. What I used to consider a weakness turned out to be a strength.</p>
+                    
+                    <p>In retrospect, I realize that being strong does not equate to being emotionless. It entails choosing how to react and having emotional awareness. It entails enduring discomfort while sitting rather than escaping it. I still have strong emotions. I still occasionally re-record conversations. Now, however, I view it differently, rather than judging myself for it. There's nothing I need to do about sensitivity. I've mastered the art of carrying it with assurance.</p>
+                    
+                    <p>I spent years trying to become someone I wasn't. I now realize that the strength I was looking for was always there, concealed within the very softness I had previously attempted to eradicate.</p>
+                </article>
+            </div>
+
+            <!-- SLO Cards -->
+            <h3 class="serif text-2xl text-slate-400 mb-8 text-center tracking-widest uppercase text-xs">Student Learning Outcomes</h3>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div id="mwa1-slo1" className="slo-card bg-white p-10 rounded-[2rem] shadow-sm flex flex-col">
-  <h3 className="serif text-3xl mb-4 text-slate-800">The Power I Struggled to Concede</h3>
-  <div className="prose text-slate-600 leading-relaxed overflow-y-auto h-[300px]">
-    <p className="mb-4 font-semibold italic text-slate-500">A reflection on sensitivity as a hidden strength.</p>
-    <p className="mb-4">For most of my life, I believed that being sensitive was a weakness. I remember sitting in my room after a long day...</p>
-    <p className="mb-4">But suppressing emotions doesn't make them disappear. It merely buried them. The turning point came when I began working closely with children...</p>
-    <div className="border-l-4 border-blue-400 pl-4 my-6 italic text-slate-700 bg-blue-50 py-2">
-      "Instead of telling them to calm down, I told them that it was okay to feel upset."
-    </div>
-    <p>I realized that the strength I was looking for was always there, concealed within the very softness I had previously attempted to eradicate.</p>
-  </div>
-</div>
-                <div id="mwa1-slo2" className="slo-card bg-white p-10 rounded-[2rem] shadow-sm flex flex-col justify-end text-slate-300">
-  <h3 className="serif text-2xl mb-2 text-slate-800">Critical Reflection</h3>
-  <p className="text-slate-600">
-    In this project, I used critical thinking to bridge the gap between my personal feelings and my professional work with children. 
-    By analyzing my past misconception that sensitivity was a "flaw," I was able to reconstruct my narrative to show how 
-    interpersonal connection is actually a form of biological and emotional consciousness.
-  </p>
-</div>
-                <div id="mwa1-slo3" className="slo-card bg-white p-10 rounded-[2rem] shadow-sm flex flex-col justify-end text-slate-300">
-  <h3 className="serif text-2xl mb-2 text-slate-800">Design & Integration (CDIG)</h3>
-  <ul className="text-slate-600 list-disc pl-5 space-y-2">
-    <li><strong>Structural Layout:</strong> Utilized a grid system to separate the narrative, the reflection, and the technical metadata.</li>
-    <li><strong>Visual Hierarchy:</strong> Implemented a stylized blockquote for the memoir’s climax to guide the reader's eye toward the shift in tone.</li>
-    <li><strong>Digital Composition:</strong> Integrated custom Tailwind styling to ensure the portfolio remains professional yet accessible for peer review.</li>
-  </ul>
-</div>
+                <div class="slo-card h-[300px] rounded-[2rem] p-10 flex flex-col justify-center items-center text-center" onclick="openSLO('mwa1-slo1')">
+                    <span class="text-6xl font-light text-indigo-200 mb-4 serif">01</span>
+                    <h4 class="serif text-2xl text-slate-800 mb-2">SLO 1</h4>
+                    <p class="text-slate-400 text-sm">Rhetorical Knowledge</p>
+                    <span class="mt-6 text-xs text-indigo-400 uppercase tracking-widest">Click to write</span>
+                </div>
+                
+                <div class="slo-card h-[300px] rounded-[2rem] p-10 flex flex-col justify-center items-center text-center" onclick="openSLO('mwa1-slo2')">
+                    <span class="text-6xl font-light text-indigo-200 mb-4 serif">02</span>
+                    <h4 class="serif text-2xl text-slate-800 mb-2">SLO 2</h4>
+                    <p class="text-slate-400 text-sm">Critical Thinking</p>
+                    <span class="mt-6 text-xs text-indigo-400 uppercase tracking-widest">Click to write</span>
+                </div>
+                
+                <div class="slo-card h-[300px] rounded-[2rem] p-10 flex flex-col justify-center items-center text-center" onclick="openSLO('mwa1-slo3')">
+                    <span class="text-6xl font-light text-indigo-200 mb-4 serif">03</span>
+                    <h4 class="serif text-2xl text-slate-800 mb-2">SLO 3</h4>
+                    <p class="text-slate-400 text-sm">Composing Processes</p>
+                    <span class="mt-6 text-xs text-indigo-400 uppercase tracking-widest">Click to write</span>
+                </div>
             </div>
         </section>
 
+        <!-- MWA 2 Section -->
         <section id="mwa2">
             <h2 class="serif text-5xl text-slate-900 mb-16" data-aos="fade-right">MWA 2</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div id="mwa2-slo1" class="slo-card h-[400px] rounded-[2rem] p-10 flex flex-col justify-end text-slate-300 font-bold tracking-widest uppercase text-[10px]">slo 1</div>
-                <div id="mwa2-slo2" class="slo-card h-[400px] rounded-[2rem] p-10 flex flex-col justify-end text-slate-300 font-bold tracking-widest uppercase text-[10px]">slo 2</div>
-                <div id="mwa2-slo3" class="slo-card h-[400px] rounded-[2rem] p-10 flex flex-col justify-end text-slate-300 font-bold tracking-widest uppercase text-[10px]">slo 3</div>
+                <div class="slo-card h-[300px] rounded-[2rem] p-10 flex flex-col justify-center items-center text-center" onclick="openSLO('mwa2-slo1')">
+                    <span class="text-6xl font-light text-slate-200 mb-4 serif">01</span>
+                    <h4 class="serif text-2xl text-slate-800 mb-2">SLO 1</h4>
+                    <span class="text-xs text-slate-300 uppercase tracking-widest">Click to write</span>
+                </div>
+                <div class="slo-card h-[300px] rounded-[2rem] p-10 flex flex-col justify-center items-center text-center" onclick="openSLO('mwa2-slo2')">
+                    <span class="text-6xl font-light text-slate-200 mb-4 serif">02</span>
+                    <h4 class="serif text-2xl text-slate-800 mb-2">SLO 2</h4>
+                    <span class="text-xs text-slate-300 uppercase tracking-widest">Click to write</span>
+                </div>
+                <div class="slo-card h-[300px] rounded-[2rem] p-10 flex flex-col justify-center items-center text-center" onclick="openSLO('mwa2-slo3')">
+                    <span class="text-6xl font-light text-slate-200 mb-4 serif">03</span>
+                    <h4 class="serif text-2xl text-slate-800 mb-2">SLO 3</h4>
+                    <span class="text-xs text-slate-300 uppercase tracking-widest">Click to write</span>
+                </div>
             </div>
         </section>
 
+        <!-- MWA 3 Section -->
         <section id="mwa3">
             <h2 class="serif text-5xl text-slate-900 mb-16" data-aos="fade-right">MWA 3</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div id="mwa3-slo1" class="slo-card h-[400px] rounded-[2rem] p-10 flex flex-col justify-end text-slate-300 font-bold tracking-widest uppercase text-[10px]">slo 1</div>
-                <div id="mwa3-slo2" class="slo-card h-[400px] rounded-[2rem] p-10 flex flex-col justify-end text-slate-300 font-bold tracking-widest uppercase text-[10px]">slo 2</div>
-                <div id="mwa3-slo3" class="slo-card h-[400px] rounded-[2rem] p-10 flex flex-col justify-end text-slate-300 font-bold tracking-widest uppercase text-[10px]">slo 3</div>
+                <div class="slo-card h-[300px] rounded-[2rem] p-10 flex flex-col justify-center items-center text-center" onclick="openSLO('mwa3-slo1')">
+                    <span class="text-6xl font-light text-slate-200 mb-4 serif">01</span>
+                    <h4 class="serif text-2xl text-slate-800 mb-2">SLO 1</h4>
+                    <span class="text-xs text-slate-300 uppercase tracking-widest">Click to write</span>
+                </div>
+                <div class="slo-card h-[300px] rounded-[2rem] p-10 flex flex-col justify-center items-center text-center" onclick="openSLO('mwa3-slo2')">
+                    <span class="text-6xl font-light text-slate-200 mb-4 serif">02</span>
+                    <h4 class="serif text-2xl text-slate-800 mb-2">SLO 2</h4>
+                    <span class="text-xs text-slate-300 uppercase tracking-widest">Click to write</span>
+                </div>
+                <div class="slo-card h-[300px] rounded-[2rem] p-10 flex flex-col justify-center items-center text-center" onclick="openSLO('mwa3-slo3')">
+                    <span class="text-6xl font-light text-slate-200 mb-4 serif">03</span>
+                    <h4 class="serif text-2xl text-slate-800 mb-2">SLO 3</h4>
+                    <span class="text-xs text-slate-300 uppercase tracking-widest">Click to write</span>
+                </div>
             </div>
         </section>
 
     </main>
 
+    <!-- Footer -->
     <footer class="py-32 border-t border-slate-50 text-center">
         <p class="text-[10px] tracking-[0.5em] uppercase text-slate-400 mb-6">Get In Touch</p>
         <a href="mailto:ruanobry@unm.edu" class="text-slate-600 hover:text-indigo-500 font-bold border-b border-transparent hover:border-indigo-100 pb-1 transition-all">ruanobry@unm.edu</a>
         <div class="mt-24 text-[9px] tracking-[0.3em] uppercase text-slate-300">© 2026 Bryan Ruano Rivera</div>
     </footer>
 
+    <!-- SLO Writing Modals -->
+    <div id="slo-modal" class="slo-modal">
+        <div class="slo-content">
+            <span class="close-btn" onclick="closeSLO()">&times;</span>
+            <h3 id="modal-title" class="serif text-4xl text-slate-900 mb-2"></h3>
+            <p id="modal-subtitle" class="text-slate-400 text-sm uppercase tracking-widest mb-12"></p>
+            
+            <textarea 
+                id="slo-textarea" 
+                class="w-full h-[400px] p-8 border border-slate-200 rounded-2xl focus:outline-none focus:border-indigo-400 resize-none text-slate-600 leading-relaxed"
+                placeholder="Start writing your reflection here..."
+            ></textarea>
+            
+            <div class="mt-6 flex justify-end space-x-4">
+                <button onclick="closeSLO()" class="px-6 py-3 text-slate-400 hover:text-slate-600 transition-colors text-sm uppercase tracking-widest">Cancel</button>
+                <button onclick="saveSLO()" class="px-8 py-3 bg-slate-900 text-white rounded-full hover:bg-indigo-600 transition-colors text-sm uppercase tracking-widest">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>AOS.init({ once: true, duration: 1000 });</script>
+    <script>
+        AOS.init({ once: true, duration: 1000 });
+        
+        // SLO Modal Functions
+        function openSLO(id) {
+            const modal = document.getElementById('slo-modal');
+            const title = document.getElementById('modal-title');
+            const subtitle = document.getElementById('modal-subtitle');
+            const textarea = document.getElementById('slo-textarea');
+            
+            // Parse ID to get MWA and SLO numbers
+            const parts = id.split('-');
+            const mwa = parts[0].toUpperCase();
+            const slo = parts[1].toUpperCase();
+            
+            title.textContent = `${mwa} — ${slo}`;
+            subtitle.textContent = 'Reflection Space';
+            
+            // Load saved content if exists
+            const saved = localStorage.getItem(id);
+            if (saved) {
+                textarea.value = saved;
+            } else {
+                textarea.value = '';
+            }
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeSLO() {
+            const modal = document.getElementById('slo-modal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        function saveSLO() {
+            const title = document.getElementById('modal-title').textContent;
+            const id = title.replace(' — ', '-').toLowerCase();
+            const textarea = document.getElementById('slo-textarea');
+            
+            localStorage.setItem(id, textarea.value);
+            closeSLO();
+            alert('Saved successfully!');
+        }
+        
+        // Close modal on outside click
+        document.getElementById('slo-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeSLO();
+            }
+        });
+    </script>
 </body>
 </html>
