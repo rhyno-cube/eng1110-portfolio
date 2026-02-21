@@ -4,37 +4,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bryan Ruano Rivera | Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;1,400;1,700&display=swap" rel="stylesheet">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Configure Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#f0f3f5',
+                        foreground: '#333333',
+                        primary: '#7a8b94',
+                        muted: '#e2e6e9',
+                        border: '#d1d5db',
+                    },
+                    fontFamily: {
+                        serif: ['Cormorant Garamond', 'serif'],
+                        sans: ['Lato', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #fdfdfd; color: #1e293b; }
-        .serif { font-family: 'Playfair Display', serif; }
+        /* Custom styles that don't use @apply */
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #f0f3f5;
+            color: #333333;
+        }
         
-        /* Navigation Hover Logic */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            line-height: 1.2;
+        }
+        
+        /* Navigation Hover */
         .nav-item .dropdown { 
-            opacity: 0; visibility: hidden; transform: translateY(12px);
+            opacity: 0; 
+            visibility: hidden; 
+            transform: translateY(12px);
             transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
         }
-        .nav-item:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
-
-        /* Protagonist Quote Styling */
-        .quote-accent { color: #6366f1; opacity: 0.2; font-size: 8rem; line-height: 0; position: absolute; }
+        .nav-item:hover .dropdown { 
+            opacity: 1; 
+            visibility: visible; 
+            transform: translateY(0); 
+        }
         
-        /* Card Styling */
+        /* Quote styling */
+        .quote-accent { 
+            color: #7a8b94; 
+            opacity: 0.2; 
+            font-size: 8rem; 
+            line-height: 0; 
+            position: absolute; 
+        }
+        
+        /* Card styling */
         .slo-card {
             background: white;
-            border: 1px solid #f1f5f9;
+            border: 1px solid #e2e6e9;
             transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
             cursor: pointer;
         }
         .slo-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 30px 60px -12px rgba(0,0,0,0.05);
-            border-color: #e2e8f0;
+            border-color: #d1d5db;
         }
         
-        /* Modal/Overlay for SLO writing */
+        /* Modal */
         .slo-modal {
             display: none;
             position: fixed;
@@ -67,11 +114,9 @@
             cursor: pointer;
             transition: color 0.3s;
         }
-        .close-btn:hover {
-            color: #1e293b;
-        }
+        .close-btn:hover { color: #1e293b; }
         
-        /* Memoir styling */
+        /* Memoir typography */
         .memoir-text {
             line-height: 2;
             font-size: 1.125rem;
@@ -81,52 +126,71 @@
             margin-bottom: 1.5rem;
             text-indent: 2rem;
         }
-        .memoir-text p:first-of-type {
-            text-indent: 0;
-        }
+        .memoir-text p:first-of-type { text-indent: 0; }
         .memoir-text p:first-of-type::first-letter {
             font-size: 4rem;
             float: left;
             line-height: 0.8;
             padding-right: 0.5rem;
-            color: #6366f1;
-            font-family: 'Playfair Display', serif;
+            color: #7a8b94;
+            font-family: 'Cormorant Garamond', serif;
         }
+        
+        /* Intro statement styling */
+        .artist-statement {
+            border-left: 3px solid #7a8b94;
+            padding-left: 2rem;
+            margin-bottom: 4rem;
+            font-style: italic;
+            color: #556;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in { animation: fadeIn 0.6s ease-out forwards; }
+        .animate-slide-up { animation: slideUp 0.6s ease-out forwards; }
     </style>
 </head>
-<body>
+<body class="antialiased">
 
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-xl border-b border-slate-50">
+    <nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-xl border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-10 h-24 flex justify-between items-center">
-            <span class="text-xl font-bold tracking-tight text-slate-900 serif">My Portfolio</span>
-            <div class="flex space-x-12 text-[11px] uppercase tracking-[0.25em] font-bold text-slate-400">
-                <a href="#" class="hover:text-slate-900 transition-colors">Home</a>
+            <span class="text-xl font-bold tracking-tight text-gray-900 font-serif">My Portfolio</span>
+            <div class="flex space-x-12 text-[11px] uppercase tracking-[0.25em] font-bold text-gray-400">
+                <a href="#" class="hover:text-gray-900 transition-colors">Home</a>
                 
                 <div class="nav-item relative group">
-                    <span class="cursor-default group-hover:text-slate-900 transition-colors">MWA 1</span>
-                    <div class="dropdown absolute top-full left-0 mt-4 w-40 bg-white border border-slate-100 shadow-2xl rounded-2xl p-5 space-y-3">
-                        <a href="#mwa1-slo1" class="block hover:text-indigo-500 italic serif">slo 1</a>
-                        <a href="#mwa1-slo2" class="block hover:text-indigo-500 italic serif">slo 2</a>
-                        <a href="#mwa1-slo3" class="block hover:text-indigo-500 italic serif">slo 3</a>
+                    <span class="cursor-default group-hover:text-gray-900 transition-colors">MWA 1</span>
+                    <div class="dropdown absolute top-full left-0 mt-4 w-40 bg-white border border-gray-100 shadow-2xl rounded-2xl p-5 space-y-3">
+                        <a href="#mwa1-slo1" class="block hover:text-primary italic font-serif">slo 1</a>
+                        <a href="#mwa1-slo2" class="block hover:text-primary italic font-serif">slo 2</a>
+                        <a href="#mwa1-slo3" class="block hover:text-primary italic font-serif">slo 3</a>
                     </div>
                 </div>
 
                 <div class="nav-item relative group">
-                    <span class="cursor-default group-hover:text-slate-900 transition-colors">MWA 2</span>
-                    <div class="dropdown absolute top-full left-0 mt-4 w-40 bg-white border border-slate-100 shadow-2xl rounded-2xl p-5 space-y-3">
-                        <a href="#mwa2-slo1" class="block hover:text-indigo-500 italic serif">slo 1</a>
-                        <a href="#mwa2-slo2" class="block hover:text-indigo-500 italic serif">slo 2</a>
-                        <a href="#mwa2-slo3" class="block hover:text-indigo-500 italic serif">slo 3</a>
+                    <span class="cursor-default group-hover:text-gray-900 transition-colors">MWA 2</span>
+                    <div class="dropdown absolute top-full left-0 mt-4 w-40 bg-white border border-gray-100 shadow-2xl rounded-2xl p-5 space-y-3">
+                        <a href="#mwa2-slo1" class="block hover:text-primary italic font-serif">slo 1</a>
+                        <a href="#mwa2-slo2" class="block hover:text-primary italic font-serif">slo 2</a>
+                        <a href="#mwa2-slo3" class="block hover:text-primary italic font-serif">slo 3</a>
                     </div>
                 </div>
 
                 <div class="nav-item relative group">
-                    <span class="cursor-default group-hover:text-slate-900 transition-colors">MWA 3</span>
-                    <div class="dropdown absolute top-full left-0 mt-4 w-40 bg-white border border-slate-100 shadow-2xl rounded-2xl p-5 space-y-3">
-                        <a href="#mwa3-slo1" class="block hover:text-indigo-500 italic serif">slo 1</a>
-                        <a href="#mwa3-slo2" class="block hover:text-indigo-500 italic serif">slo 2</a>
-                        <a href="#mwa3-slo3" class="block hover:text-indigo-500 italic serif">slo 3</a>
+                    <span class="cursor-default group-hover:text-gray-900 transition-colors">MWA 3</span>
+                    <div class="dropdown absolute top-full left-0 mt-4 w-40 bg-white border border-gray-100 shadow-2xl rounded-2xl p-5 space-y-3">
+                        <a href="#mwa3-slo1" class="block hover:text-primary italic font-serif">slo 1</a>
+                        <a href="#mwa3-slo2" class="block hover:text-primary italic font-serif">slo 2</a>
+                        <a href="#mwa3-slo3" class="block hover:text-primary italic font-serif">slo 3</a>
                     </div>
                 </div>
             </div>
@@ -135,21 +199,21 @@
 
     <!-- Header -->
     <header class="min-h-screen flex flex-col justify-center items-center text-center px-6">
-        <div data-aos="fade-up" data-aos-duration="1200">
-            <h1 class="serif text-7xl md:text-9xl text-slate-900 mb-8">Welcome.</h1>
-            <p class="text-slate-400 tracking-[0.5em] uppercase text-xs font-bold mb-4">Bryan Ruano Rivera</p>
-            <p class="text-slate-300 tracking-[0.2em] uppercase text-[10px] font-bold">ENG 1110 — First-Year Composition</p>
+        <div class="animate-slide-up">
+            <h1 class="font-serif text-7xl md:text-9xl text-gray-900 mb-8">Welcome.</h1>
+            <p class="text-gray-400 tracking-[0.5em] uppercase text-xs font-bold mb-4">Bryan Ruano Rivera</p>
+            <p class="text-gray-300 tracking-[0.2em] uppercase text-[10px] font-bold">ENG 1110 — First-Year Composition</p>
         </div>
     </header>
 
     <!-- Quote Section -->
-    <section class="py-60 bg-slate-50/50">
-        <div class="max-w-4xl mx-auto px-10 relative text-center" data-aos="zoom-in">
-            <span class="quote-accent serif left-0 -top-10">"</span>
-            <blockquote class="serif text-5xl md:text-7xl text-slate-800 italic leading-tight relative z-10">
+    <section class="py-60 bg-gray-50/50">
+        <div class="max-w-4xl mx-auto px-10 relative text-center">
+            <span class="quote-accent font-serif left-0 -top-10">"</span>
+            <blockquote class="font-serif text-5xl md:text-7xl text-gray-800 italic leading-tight relative z-10">
                 Writing is thinking on paper.
             </blockquote>
-            <p class="mt-12 text-[12px] tracking-[0.4em] uppercase text-slate-400 font-bold">— William Zinsser</p>
+            <p class="mt-12 text-[12px] tracking-[0.4em] uppercase text-gray-400 font-bold">— William Zinsser</p>
         </div>
     </section>
 
@@ -158,13 +222,26 @@
         
         <!-- MWA 1 Section -->
         <section id="mwa1">
-            <h2 class="serif text-5xl text-slate-900 mb-16" data-aos="fade-right">MWA 1: Memoir</h2>
+            <h2 class="font-serif text-5xl text-gray-900 mb-16">MWA 1: Memoir</h2>
             
             <!-- Full Memoir Draft -->
-            <div class="max-w-3xl mx-auto mb-20" data-aos="fade-up">
-                <h3 class="serif text-3xl text-slate-800 mb-2 text-center">The Power I Struggled to Concede</h3>
-                <div class="w-24 h-px bg-indigo-400 mx-auto mb-12"></div>
+            <div class="max-w-3xl mx-auto mb-20">
                 
+                <!-- Artist's Statement / Intro -->
+                <div class="artist-statement mb-16">
+                    <p class="text-lg leading-relaxed mb-4">
+                        This project compelled me to view vulnerability as an argument rather than a confession. Along with sharing a personal story, I wanted to demonstrate that sensitivity can be a strength if it is purposefully reframed. By focusing on restraint and clarity rather than relying on dramatic moments, I made sure that every detail supported a main point. I avoided using too much decorative language and exaggeration so that the message felt controlled rather than emotional for the sake of emotion.
+                    </p>
+                    <p class="text-lg leading-relaxed">
+                        I chose structurally gradual realization over a single turning point in order to reflect how growth actually occurs. If I were to make any additional changes, I would engage with opposing points of view more directly to heighten the tension. All things considered, I made the best choice by maintaining an authoritative tone and presenting vulnerability as evidence rather than weakness.
+                    </p>
+                </div>
+                
+                <!-- Memoir Title -->
+                <h3 class="font-serif text-3xl text-gray-800 mb-2 text-center">The Power I Struggled to Concede</h3>
+                <div class="w-24 h-px bg-primary mx-auto mb-12"></div>
+                
+                <!-- Memoir Content -->
                 <article class="memoir-text">
                     <p>For most of my life, I believed that being sensitive was a weakness. I remember sitting in my room one evening after a long day and mentally reliving conversations. Someone had made a careless comment, and although they probably forgot about it minutes later, I continued to think about it for hours. My thoughts were loud, but the only sound in the room was the soft hum of the ceiling fan. I thought about what I had heard before: You're too personal about things. You're too emotional. You must have thicker skin.</p>
                     
@@ -178,6 +255,8 @@
                     
                     <p>I had never allowed myself to see the very trait I had tried before, but in that moment, I realized that it was the very quality I had tried to hide that was responsible for my high level of interpersonal connection. I wasn't weak because I was sensitive. It was consciousness. It was compassion. It made it possible for me to see things that others might have missed, like a change in tone, a person avoiding eye contact, or a silence that conveyed more meaning than words. What I used to consider a weakness turned out to be a strength.</p>
                     
+                    <p>In retrospect, I realize that being strong does not equate to being emotionless. It entails choosing how to react and having emotional awareness. It entails enduring discomfort while sitting rather than escaping it.</p>
+                    
                     <p>In retrospect, I realize that being strong does not equate to being emotionless. It entails choosing how to react and having emotional awareness. It entails enduring discomfort while sitting rather than escaping it. I still have strong emotions. I still occasionally re-record conversations. Now, however, I view it differently, rather than judging myself for it. There's nothing I need to do about sensitivity. I've mastered the art of carrying it with assurance.</p>
                     
                     <p>I spent years trying to become someone I wasn't. I now realize that the strength I was looking for was always there, concealed within the very softness I had previously attempted to eradicate.</p>
@@ -185,71 +264,71 @@
             </div>
 
             <!-- SLO Cards -->
-            <h3 class="serif text-2xl text-slate-400 mb-8 text-center tracking-widest uppercase text-xs">Student Learning Outcomes</h3>
+            <h3 class="font-serif text-2xl text-gray-400 mb-8 text-center tracking-widest uppercase text-xs">Student Learning Outcomes</h3>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="slo-card h-[300px] rounded-[2rem] p-10 flex flex-col justify-center items-center text-center" onclick="openSLO('mwa1-slo1')">
-                    <span class="text-6xl font-light text-indigo-200 mb-4 serif">01</span>
-                    <h4 class="serif text-2xl text-slate-800 mb-2">SLO 1</h4>
-                    <p class="text-slate-400 text-sm">Rhetorical Knowledge</p>
-                    <span class="mt-6 text-xs text-indigo-400 uppercase tracking-widest">Click to write</span>
+                    <span class="text-6xl font-light text-gray-300 mb-4 font-serif">01</span>
+                    <h4 class="font-serif text-2xl text-gray-800 mb-2">SLO 1</h4>
+                    <p class="text-gray-400 text-sm">Rhetorical Knowledge</p>
+                    <span class="mt-6 text-xs text-primary uppercase tracking-widest">Click to write</span>
                 </div>
                 
                 <div class="slo-card h-[300px] rounded-[2rem] p-10 flex flex-col justify-center items-center text-center" onclick="openSLO('mwa1-slo2')">
-                    <span class="text-6xl font-light text-indigo-200 mb-4 serif">02</span>
-                    <h4 class="serif text-2xl text-slate-800 mb-2">SLO 2</h4>
-                    <p class="text-slate-400 text-sm">Critical Thinking</p>
-                    <span class="mt-6 text-xs text-indigo-400 uppercase tracking-widest">Click to write</span>
+                    <span class="text-6xl font-light text-gray-300 mb-4 font-serif">02</span>
+                    <h4 class="font-serif text-2xl text-gray-800 mb-2">SLO 2</h4>
+                    <p class="text-gray-400 text-sm">Critical Thinking</p>
+                    <span class="mt-6 text-xs text-primary uppercase tracking-widest">Click to write</span>
                 </div>
                 
                 <div class="slo-card h-[300px] rounded-[2rem] p-10 flex flex-col justify-center items-center text-center" onclick="openSLO('mwa1-slo3')">
-                    <span class="text-6xl font-light text-indigo-200 mb-4 serif">03</span>
-                    <h4 class="serif text-2xl text-slate-800 mb-2">SLO 3</h4>
-                    <p class="text-slate-400 text-sm">Composing Processes</p>
-                    <span class="mt-6 text-xs text-indigo-400 uppercase tracking-widest">Click to write</span>
+                    <span class="text-6xl font-light text-gray-300 mb-4 font-serif">03</span>
+                    <h4 class="font-serif text-2xl text-gray-800 mb-2">SLO 3</h4>
+                    <p class="text-gray-400 text-sm">Composing Processes</p>
+                    <span class="mt-6 text-xs text-primary uppercase tracking-widest">Click to write</span>
                 </div>
             </div>
         </section>
 
         <!-- MWA 2 Section -->
         <section id="mwa2">
-            <h2 class="serif text-5xl text-slate-900 mb-16" data-aos="fade-right">MWA 2</h2>
+            <h2 class="font-serif text-5xl text-gray-900 mb-16">MWA 2</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="slo-card h-[300px] rounded-[2rem] p-10 flex flex-col justify-center items-center text-center" onclick="openSLO('mwa2-slo1')">
-                    <span class="text-6xl font-light text-slate-200 mb-4 serif">01</span>
-                    <h4 class="serif text-2xl text-slate-800 mb-2">SLO 1</h4>
-                    <span class="text-xs text-slate-300 uppercase tracking-widest">Click to write</span>
+                    <span class="text-6xl font-light text-gray-200 mb-4 font-serif">01</span>
+                    <h4 class="font-serif text-2xl text-gray-800 mb-2">SLO 1</h4>
+                    <span class="text-xs text-gray-300 uppercase tracking-widest">Click to write</span>
                 </div>
                 <div class="slo-card h-[300px] rounded-[2rem] p-10 flex flex-col justify-center items-center text-center" onclick="openSLO('mwa2-slo2')">
-                    <span class="text-6xl font-light text-slate-200 mb-4 serif">02</span>
-                    <h4 class="serif text-2xl text-slate-800 mb-2">SLO 2</h4>
-                    <span class="text-xs text-slate-300 uppercase tracking-widest">Click to write</span>
+                    <span class="text-6xl font-light text-gray-200 mb-4 font-serif">02</span>
+                    <h4 class="font-serif text-2xl text-gray-800 mb-2">SLO 2</h4>
+                    <span class="text-xs text-gray-300 uppercase tracking-widest">Click to write</span>
                 </div>
                 <div class="slo-card h-[300px] rounded-[2rem] p-10 flex flex-col justify-center items-center text-center" onclick="openSLO('mwa2-slo3')">
-                    <span class="text-6xl font-light text-slate-200 mb-4 serif">03</span>
-                    <h4 class="serif text-2xl text-slate-800 mb-2">SLO 3</h4>
-                    <span class="text-xs text-slate-300 uppercase tracking-widest">Click to write</span>
+                    <span class="text-6xl font-light text-gray-200 mb-4 font-serif">03</span>
+                    <h4 class="font-serif text-2xl text-gray-800 mb-2">SLO 3</h4>
+                    <span class="text-xs text-gray-300 uppercase tracking-widest">Click to write</span>
                 </div>
             </div>
         </section>
 
         <!-- MWA 3 Section -->
         <section id="mwa3">
-            <h2 class="serif text-5xl text-slate-900 mb-16" data-aos="fade-right">MWA 3</h2>
+            <h2 class="font-serif text-5xl text-gray-900 mb-16">MWA 3</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="slo-card h-[300px] rounded-[2rem] p-10 flex flex-col justify-center items-center text-center" onclick="openSLO('mwa3-slo1')">
-                    <span class="text-6xl font-light text-slate-200 mb-4 serif">01</span>
-                    <h4 class="serif text-2xl text-slate-800 mb-2">SLO 1</h4>
-                    <span class="text-xs text-slate-300 uppercase tracking-widest">Click to write</span>
+                    <span class="text-6xl font-light text-gray-200 mb-4 font-serif">01</span>
+                    <h4 class="font-serif text-2xl text-gray-800 mb-2">SLO 1</h4>
+                    <span class="text-xs text-gray-300 uppercase tracking-widest">Click to write</span>
                 </div>
                 <div class="slo-card h-[300px] rounded-[2rem] p-10 flex flex-col justify-center items-center text-center" onclick="openSLO('mwa3-slo2')">
-                    <span class="text-6xl font-light text-slate-200 mb-4 serif">02</span>
-                    <h4 class="serif text-2xl text-slate-800 mb-2">SLO 2</h4>
-                    <span class="text-xs text-slate-300 uppercase tracking-widest">Click to write</span>
+                    <span class="text-6xl font-light text-gray-200 mb-4 font-serif">02</span>
+                    <h4 class="font-serif text-2xl text-gray-800 mb-2">SLO 2</h4>
+                    <span class="text-xs text-gray-300 uppercase tracking-widest">Click to write</span>
                 </div>
                 <div class="slo-card h-[300px] rounded-[2rem] p-10 flex flex-col justify-center items-center text-center" onclick="openSLO('mwa3-slo3')">
-                    <span class="text-6xl font-light text-slate-200 mb-4 serif">03</span>
-                    <h4 class="serif text-2xl text-slate-800 mb-2">SLO 3</h4>
-                    <span class="text-xs text-slate-300 uppercase tracking-widest">Click to write</span>
+                    <span class="text-6xl font-light text-gray-200 mb-4 font-serif">03</span>
+                    <h4 class="font-serif text-2xl text-gray-800 mb-2">SLO 3</h4>
+                    <span class="text-xs text-gray-300 uppercase tracking-widest">Click to write</span>
                 </div>
             </div>
         </section>
@@ -257,67 +336,55 @@
     </main>
 
     <!-- Footer -->
-    <footer class="py-32 border-t border-slate-50 text-center">
-        <p class="text-[10px] tracking-[0.5em] uppercase text-slate-400 mb-6">Get In Touch</p>
-        <a href="mailto:ruanobry@unm.edu" class="text-slate-600 hover:text-indigo-500 font-bold border-b border-transparent hover:border-indigo-100 pb-1 transition-all">ruanobry@unm.edu</a>
-        <div class="mt-24 text-[9px] tracking-[0.3em] uppercase text-slate-300">© 2026 Bryan Ruano Rivera</div>
+    <footer class="py-32 border-t border-gray-100 text-center">
+        <p class="text-[10px] tracking-[0.5em] uppercase text-gray-400 mb-6">Get In Touch</p>
+        <a href="mailto:ruanobry@unm.edu" class="text-gray-600 hover:text-primary font-bold border-b border-transparent hover:border-gray-200 pb-1 transition-all">ruanobry@unm.edu</a>
+        <div class="mt-24 text-[9px] tracking-[0.3em] uppercase text-gray-300">© 2026 Bryan Ruano Rivera</div>
     </footer>
 
-    <!-- SLO Writing Modals -->
+    <!-- SLO Writing Modal -->
     <div id="slo-modal" class="slo-modal">
         <div class="slo-content">
             <span class="close-btn" onclick="closeSLO()">&times;</span>
-            <h3 id="modal-title" class="serif text-4xl text-slate-900 mb-2"></h3>
-            <p id="modal-subtitle" class="text-slate-400 text-sm uppercase tracking-widest mb-12"></p>
+            <h3 id="modal-title" class="font-serif text-4xl text-gray-900 mb-2"></h3>
+            <p id="modal-subtitle" class="text-gray-400 text-sm uppercase tracking-widest mb-12">Reflection Space</p>
             
             <textarea 
                 id="slo-textarea" 
-                class="w-full h-[400px] p-8 border border-slate-200 rounded-2xl focus:outline-none focus:border-indigo-400 resize-none text-slate-600 leading-relaxed"
+                class="w-full h-[400px] p-8 border border-gray-200 rounded-2xl focus:outline-none focus:border-primary resize-none text-gray-600 leading-relaxed"
                 placeholder="Start writing your reflection here..."
             ></textarea>
             
             <div class="mt-6 flex justify-end space-x-4">
-                <button onclick="closeSLO()" class="px-6 py-3 text-slate-400 hover:text-slate-600 transition-colors text-sm uppercase tracking-widest">Cancel</button>
-                <button onclick="saveSLO()" class="px-8 py-3 bg-slate-900 text-white rounded-full hover:bg-indigo-600 transition-colors text-sm uppercase tracking-widest">Save</button>
+                <button onclick="closeSLO()" class="px-6 py-3 text-gray-400 hover:text-gray-600 transition-colors text-sm uppercase tracking-widest">Cancel</button>
+                <button onclick="saveSLO()" class="px-8 py-3 bg-gray-900 text-white rounded-full hover:bg-primary transition-colors text-sm uppercase tracking-widest">Save</button>
             </div>
         </div>
     </div>
 
     <!-- Scripts -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ once: true, duration: 1000 });
-        
-        // SLO Modal Functions
+        // Modal Functions
         function openSLO(id) {
             const modal = document.getElementById('slo-modal');
             const title = document.getElementById('modal-title');
-            const subtitle = document.getElementById('modal-subtitle');
             const textarea = document.getElementById('slo-textarea');
             
-            // Parse ID to get MWA and SLO numbers
             const parts = id.split('-');
             const mwa = parts[0].toUpperCase();
             const slo = parts[1].toUpperCase();
             
             title.textContent = `${mwa} — ${slo}`;
-            subtitle.textContent = 'Reflection Space';
             
-            // Load saved content if exists
             const saved = localStorage.getItem(id);
-            if (saved) {
-                textarea.value = saved;
-            } else {
-                textarea.value = '';
-            }
+            textarea.value = saved || '';
             
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
         
         function closeSLO() {
-            const modal = document.getElementById('slo-modal');
-            modal.classList.remove('active');
+            document.getElementById('slo-modal').classList.remove('active');
             document.body.style.overflow = 'auto';
         }
         
@@ -328,14 +395,10 @@
             
             localStorage.setItem(id, textarea.value);
             closeSLO();
-            alert('Saved successfully!');
         }
         
-        // Close modal on outside click
         document.getElementById('slo-modal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeSLO();
-            }
+            if (e.target === this) closeSLO();
         });
     </script>
 </body>
