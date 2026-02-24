@@ -33,7 +33,6 @@
     </script>
     
     <style>
-        /* Custom styles that don't use @apply */
         body {
             font-family: 'Lato', sans-serif;
             background-color: #f0f3f5;
@@ -89,32 +88,57 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(255,255,255,0.95);
+            background: rgba(255,255,255,0.97);
             backdrop-filter: blur(20px);
             z-index: 100;
             overflow-y: auto;
         }
         .slo-modal.active {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             justify-content: center;
+            animation: modalFadeIn 0.4s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+        }
+        @keyframes modalFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
         .slo-content {
             max-width: 800px;
             width: 90%;
-            padding: 60px;
+            padding: 80px 60px;
             position: relative;
         }
         .close-btn {
-            position: absolute;
+            position: fixed;
             top: 40px;
             right: 40px;
             font-size: 2rem;
             color: #94a3b8;
             cursor: pointer;
             transition: color 0.3s;
+            line-height: 1;
         }
         .close-btn:hover { color: #1e293b; }
+
+        /* Modal content body text */
+        .slo-body {
+            font-size: 1.05rem;
+            line-height: 2;
+            color: #475569;
+        }
+        .slo-body p {
+            margin-bottom: 1.75rem;
+        }
+
+        /* Modal entry animation for content */
+        .slo-content-inner {
+            animation: contentSlideUp 0.5s cubic-bezier(0.23, 1, 0.32, 1) 0.1s both;
+        }
+        @keyframes contentSlideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
         
         /* Memoir typography */
         .memoir-text {
@@ -145,7 +169,7 @@
             color: #556;
         }
         
-        /* Animations - PRESERVED EXACTLY AS ORIGINAL */
+        /* Animations - PRESERVED EXACTLY */
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -156,31 +180,21 @@
         }
         .animate-fade-in { animation: fadeIn 0.6s ease-out forwards; }
         .animate-slide-up { animation: slideUp 0.6s ease-out forwards; }
-        
-        /* NEW: Soft image reveal animations - matching existing cubic-bezier style */
-        @keyframes imageReveal {
-            from { 
-                opacity: 0; 
-                transform: translateY(20px) scale(0.97); 
-            }
-            to { 
-                opacity: 1; 
-                transform: translateY(0) scale(1); 
-            }
-        }
-        
+
+        /* Image reveal - matches existing cubic-bezier style */
         .image-reveal {
             opacity: 0;
-            animation: imageReveal 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+            transform: translateY(20px) scale(0.97);
+            transition: opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1), transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
         }
-        
-        .image-reveal-delay-1 { animation-delay: 0.1s; }
-        .image-reveal-delay-2 { animation-delay: 0.2s; }
-        .image-reveal-delay-3 { animation-delay: 0.3s; }
-        
+        .image-reveal.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
         /* Image container styling */
         .memoir-image-container {
-            margin: 3rem 0;
+            margin: 2.5rem 0;
             position: relative;
         }
         
@@ -190,8 +204,8 @@
             border-radius: 0.5rem;
             box-shadow: 0 4px 20px rgba(0,0,0,0.06);
             transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            display: block;
         }
-        
         .memoir-image:hover {
             transform: scale(1.01);
         }
@@ -199,59 +213,64 @@
         /* Image credit styling */
         .image-credit {
             font-size: 0.75rem;
-            color: #999;
+            color: #aaa;
             font-style: italic;
-            margin-top: 0.75rem;
+            margin-top: 0.6rem;
             text-align: center;
             letter-spacing: 0.02em;
         }
-        
         .image-credit a {
-            color: #999;
+            color: #aaa;
             text-decoration: none;
             transition: color 0.3s ease;
         }
-        
         .image-credit a:hover {
             color: #7a8b94;
         }
         
-        /* Layout variations for images */
+        /* Layout variations */
         .image-right {
             float: right;
-            width: 45%;
-            margin: 0 0 2rem 2rem;
+            width: 42%;
+            margin: 0.5rem 0 1.5rem 2rem;
         }
-        
         .image-left {
             float: left;
-            width: 45%;
-            margin: 0 2rem 2rem 0;
+            width: 42%;
+            margin: 0.5rem 2rem 1.5rem 0;
         }
-        
         .image-center {
             width: 100%;
-            max-width: 600px;
-            margin: 3rem auto;
+            max-width: 580px;
+            margin: 2.5rem auto;
             display: block;
+            float: none;
+            clear: both;
         }
-        
         .image-full {
             width: 100%;
             margin: 3rem 0;
+            float: none;
+            clear: both;
         }
-        
-        /* Clearfix for floated images */
-        .memoir-text::after {
+
+        /* Clearfix */
+        .memoir-text p { overflow: hidden; }
+        .clearfix::after {
             content: "";
             display: table;
             clear: both;
         }
-        
-        /* Smooth scroll behavior enhancement */
-        html {
-            scroll-behavior: smooth;
+
+        /* Divider between memoir and SLOs */
+        .section-divider {
+            width: 60px;
+            height: 1px;
+            background: #d1d5db;
+            margin: 5rem auto;
         }
+
+        html { scroll-behavior: smooth; }
     </style>
 </head>
 <body class="antialiased">
@@ -266,9 +285,9 @@
                 <div class="nav-item relative group">
                     <span class="cursor-default group-hover:text-gray-900 transition-colors">MWA 1</span>
                     <div class="dropdown absolute top-full left-0 mt-4 w-40 bg-white border border-gray-100 shadow-2xl rounded-2xl p-5 space-y-3">
-                        <a href="#mwa1-slo1" class="block hover:text-primary italic font-serif">slo 1</a>
-                        <a href="#mwa1-slo2" class="block hover:text-primary italic font-serif">slo 2</a>
-                        <a href="#mwa1-slo3" class="block hover:text-primary italic font-serif">slo 3</a>
+                        <a href="#mwa1" onclick="setTimeout(()=>openSLO('mwa1-slo1'),400)" class="block hover:text-primary italic font-serif">slo 1</a>
+                        <a href="#mwa1" onclick="setTimeout(()=>openSLO('mwa1-slo2'),400)" class="block hover:text-primary italic font-serif">slo 2</a>
+                        <a href="#mwa1" onclick="setTimeout(()=>openSLO('mwa1-slo3'),400)" class="block hover:text-primary italic font-serif">slo 3</a>
                     </div>
                 </div>
 
@@ -323,7 +342,7 @@
             <!-- Full Memoir Draft -->
             <div class="max-w-3xl mx-auto mb-20">
                 
-                <!-- Artist's Statement / Intro -->
+                <!-- Artist's Statement -->
                 <div class="artist-statement mb-16">
                     <p class="text-lg leading-relaxed mb-4">
                         This project compelled me to view vulnerability as an argument rather than a confession. Along with sharing a personal story, I wanted to demonstrate that sensitivity can be a strength if it is purposefully reframed. By focusing on restraint and clarity rather than relying on dramatic moments, I made sure that every detail supported a main point. I avoided using too much decorative language and exaggeration so that the message felt controlled rather than emotional for the sake of emotion.
@@ -337,137 +356,129 @@
                 <h3 class="font-serif text-3xl text-gray-800 mb-2 text-center">The Power I Struggled to Concede</h3>
                 <div class="w-24 h-px bg-primary mx-auto mb-12"></div>
                 
-                <!-- Memoir Content with Integrated Images -->
-                <article class="memoir-text">
-                    
-                    <!-- Image 1: Ceiling Fan - Right aligned after opening -->
-                    <div class="memoir-image-container image-right image-reveal image-reveal-delay-1">
-                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" 
-                             alt="Ceiling fan blur" 
-                             class="memoir-image">
-                        <p class="image-credit">
-                            Photo by <a href="https://unsplash.com/@abass04" target="_blank">Ahmad Budi</a> on <a href="https://unsplash.com" target="_blank">Unsplash</a>
-                        </p>
-                    </div>
-                    
-                    <p>For the majority of my life, I thought that being sensitive was a weakness that needed to be fixed. After a long day, I can still see myself sitting by myself in my room while the ceiling fan hums a gentle, rhythmic blur overhead. The air was heavy. I played back a quick conversation from earlier, a thoughtless comment someone made and then forgot. But it resonated with me. "You're too personal," they accused, their words looping until they blended into my own voice. Too sentimental. Become more resilient. Somehow, I discovered that silence was a sign of strength. Being emotional meant losing control, and maintaining that composure was armor. I therefore taught myself to swallow what lingered and laugh off what hurt. I learned to remain motionless when something hurt until my only form of relaxation was numbness. Up until it didn't, it worked. The parts of me that were buried fermented instead of disappearing.</p>
-                    
-                    <!-- Image 2: Light Shadows on Sofa - Left aligned -->
-                    <div class="memoir-image-container image-left image-reveal image-reveal-delay-2">
-                        <img src="https://images.unsplash.com/photo-1505693416388-b0346ef414b8?w=800&q=80" 
-                             alt="Light shadows on sofa" 
-                             class="memoir-image">
-                        <p class="image-credit">
-                            Photo by <a href="https://unsplash.com/@mutanzom" target="_blank">Efe Kekikciler</a> on <a href="https://unsplash.com" target="_blank">Unsplash</a>
-                        </p>
-                    </div>
-                    
-                    <!-- Image 3: Books by Window - Centered transition -->
-                    <div class="memoir-image-container image-center image-reveal image-reveal-delay-3">
-                        <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=800&q=80" 
-                             alt="Books by window" 
-                             class="memoir-image">
-                        <p class="image-credit">
-                            Photo by <a href="https://unsplash.com/@nate_dumlao" target="_blank">Nathan Dumlao</a> on <a href="https://unsplash.com" target="_blank">Unsplash</a>
-                        </p>
-                    </div>
-                    
-                    <p>Silently, almost by accident, the shift started. When I first started working with kids, I assumed it would be easy, just listening, guiding, and helping. But as time went on, I saw how they would come to me when they were feeling overburdened. On occasion, they would sit quietly next to me, their little shoulders shaking as they tried not to cry. On other occasions, they would express their entire range of emotions in fragmented sentences, including anger, frustration, and sadness.</p>
-                    
-                    <!-- Image 4: Child and Adult Hands - Right aligned -->
+                <!-- Memoir Content -->
+                <article class="memoir-text clearfix">
+
+                    <!-- IMAGE 1: Ceiling Fan — right, floats beside opening paragraph -->
                     <div class="memoir-image-container image-right image-reveal">
-                        <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?w=800&q=80" 
-                             alt="Child and adult hands" 
+                        <img src="ahmad-budi-38ugO5kSjsY-unsplash.jpg"
+                             alt="Ceiling fan, softly blurred overhead"
                              class="memoir-image">
                         <p class="image-credit">
-                            Photo by <a href="https://unsplash.com/@ika_ika" target="_blank">ika ika</a> on <a href="https://unsplash.com" target="_blank">Unsplash</a>
+                            Photo by <a href="https://unsplash.com/@abass04" target="_blank" rel="noopener">Ahmad Budi</a> on <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a>
                         </p>
                     </div>
-                    
-                    <p>One afternoon, I was approached by a kid who was crying over something that adults would not think much of. The room smelled faintly of sanitizer and crayons. Chairs were scraping and someone was laughing too loudly, but in that small sphere beside us, nothing moved. They clenched their fists, their face flushed, and the shame started to creep in. I dropped to my knees beside them. "It's okay to feel upset," I said instead of brushing it off. Until their chest relaxed and their grip on the present relaxed, we stayed there, breathing wildly together.</p>
-                    
-                    <!-- Image 5: Child Emotion (B&W) - Full width emotional peak -->
-                    <div class="memoir-image-container image-full image-reveal">
-                        <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=1200&q=80" 
-                             alt="Child emotion" 
-                             class="memoir-image">
-                        <p class="image-credit">
-                            Photo by <a href="https://unsplash.com/@kazuend" target="_blank">kazuend</a> on <a href="https://unsplash.com" target="_blank">Unsplash</a>
-                        </p>
-                    </div>
-                    
-                    <!-- Image 6: Speedometer - Left aligned -->
+
+                    <p>For the majority of my life, I thought that being sensitive was a weakness that needed to be fixed. After a long day, I can still see myself sitting by myself in my room while the ceiling fan hums a gentle, rhythmic blur overhead. The air was heavy. I played back a quick conversation from earlier, a thoughtless comment someone made and then forgot. But it resonated with me. "You're too personal," they accused, their words looping until they blended into my own voice. Too sentimental. Become more resilient. Somehow, I discovered that silence was a sign of strength. Being emotional meant losing control, and maintaining that composure was armor. I therefore taught myself to swallow what lingered and laugh off what hurt. I learned to remain motionless when something hurt until my only form of relaxation was numbness. Up until it didn't, it worked. The parts of me that were buried fermented instead of disappearing.</p>
+
+                    <!-- IMAGE 2: Shadows on Sofa — left, floats beside the weight of burying emotions -->
                     <div class="memoir-image-container image-left image-reveal">
-                        <img src="https://images.unsplash.com/photo-1566222635488-ff05940b9b2c?w=800&q=80" 
-                             alt="Speedometer" 
+                        <img src="efe-kekikciler-APy5TV9HrVo-unsplash.jpg"
+                             alt="Sunlight casting shadows over a covered sofa"
                              class="memoir-image">
                         <p class="image-credit">
-                            Photo by <a href="https://unsplash.com/@nate_dumlao" target="_blank">Nathan Dumlao</a> on <a href="https://unsplash.com" target="_blank">Unsplash</a>
+                            Photo by <a href="https://unsplash.com/@mutanzom" target="_blank" rel="noopener">Efe Kekikciler</a> on <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a>
                         </p>
                     </div>
-                    
+
+                    <p>Silently, almost by accident, the shift started. When I first started working with kids, I assumed it would be easy, just listening, guiding, and helping. But as time went on, I saw how they would come to me when they were feeling overburdened. On occasion, they would sit quietly next to me, their little shoulders shaking as they tried not to cry. On other occasions, they would express their entire range of emotions in fragmented sentences, including anger, frustration, and sadness.</p>
+
+                    <!-- IMAGE 3: Books by Window — centered transition, clearing floats -->
+                    <div class="memoir-image-container image-center image-reveal">
+                        <img src="nathan-dumlao-41LeKielPIM-unsplash.jpg"
+                             alt="A stack of books resting beside a window"
+                             class="memoir-image">
+                        <p class="image-credit">
+                            Photo by <a href="https://unsplash.com/@nate_dumlao" target="_blank" rel="noopener">Nathan Dumlao</a> on <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a>
+                        </p>
+                    </div>
+
+                    <!-- IMAGE 4: Child & Adult Hands — right, beside the kids scene -->
+                    <div class="memoir-image-container image-right image-reveal">
+                        <img src="ika-ika-2x-s8iKJfrI-unsplash.jpg"
+                             alt="Adult and child hands holding gently"
+                             class="memoir-image">
+                        <p class="image-credit">
+                            Photo by <a href="https://unsplash.com/@ika_ika" target="_blank" rel="noopener">ika ika</a> on <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a>
+                        </p>
+                    </div>
+
+                    <p>One afternoon, I was approached by a kid who was crying over something that adults would not think much of. The room smelled faintly of sanitizer and crayons. Chairs were scraping and someone was laughing too loudly, but in that small sphere beside us, nothing moved. They clenched their fists, their face flushed, and the shame started to creep in. I dropped to my knees beside them. "It's okay to feel upset," I said instead of brushing it off. Until their chest relaxed and their grip on the present relaxed, we stayed there, breathing wildly together.</p>
+
+                    <!-- IMAGE 5: Child Emotion B&W — full width, emotional peak -->
+                    <div class="memoir-image-container image-full image-reveal">
+                        <img src="kazuend-BnRHU4DL_PM-unsplash.jpg"
+                             alt="A black and white photograph of a child"
+                             class="memoir-image">
+                        <p class="image-credit">
+                            Photo by <a href="https://unsplash.com/@kazuend" target="_blank" rel="noopener">kazuend</a> on <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a>
+                        </p>
+                    </div>
+
+                    <!-- IMAGE 6: Speedometer — left, beside the drive home -->
+                    <div class="memoir-image-container image-left image-reveal">
+                        <img src="nathan-dumlao-2VqRX_qMC3E-unsplash.jpg"
+                             alt="Close-up of a car speedometer"
+                             class="memoir-image">
+                        <p class="image-credit">
+                            Photo by <a href="https://unsplash.com/@nate_dumlao" target="_blank" rel="noopener">Nathan Dumlao</a> on <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a>
+                        </p>
+                    </div>
+
                     <p>I kept playing back that brief conversation as I drove home. It struck me that the very trait I'd hidden, my softness, my instinct to feel too deeply, was exactly what made that moment possible. I picked up on details that others missed, like the hesitancy in someone's voice and the fact that silence can reveal more truth than words ever could. I wasn't weak because I was sensitive. It was a sort of awareness, a silent force that was steady and observant.</p>
-                    
+
                     <p>I still overthink things. I still replay conversations, wondering what I could have said. The distinction is that I no longer treat that inclination as a medical condition. Sensitivity is a skill that must be carried; it is not something that can be outgrown. I have learned the ability to speak it fluently. I still occasionally catch myself fighting the old toughening reflex. However, I then recall that true strength isn't about fighting against what moves you. It's allowing emotions to flow through you without allowing them to control you. It involves enduring discomfort long enough to grow from it rather than trying to hide it. Nothing about that is delicate.</p>
-                    
-                    <!-- Image 7: Open Hands Soft Light - Centered finale -->
-                    <div class="memoir-image-container image-center image-reveal" style="max-width: 500px;">
-                        <img src="https://images.unsplash.com/photo-1519415943484-9fa1873496d4?w=800&q=80" 
-                             alt="Open hands soft light" 
+
+                    <!-- IMAGE 8: Roadside Sign — before the final paragraph, journey metaphor -->
+                    <div class="memoir-image-container image-center image-reveal">
+                        <img src="nathan-dumlao-kInCUNLOsss-unsplash.jpg"
+                             alt="A red and white sign at the side of a road"
                              class="memoir-image">
                         <p class="image-credit">
-                            Photo by <a href="https://unsplash.com/@agustinfernandez" target="_blank">Agustin Fernandez</a> on <a href="https://unsplash.com" target="_blank">Unsplash</a>
+                            Photo by <a href="https://unsplash.com/@nate_dumlao" target="_blank" rel="noopener">Nathan Dumlao</a> on <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a>
                         </p>
                     </div>
-                    
-                    <!-- Image 8: Roadside Sign - Optional visual break -->
-                    <div class="memoir-image-container image-full image-reveal" style="max-width: 700px; margin-left: auto; margin-right: auto;">
-                        <img src="https://images.unsplash.com/photo-1566222635488-ff05940b9b2c?w=1200&q=80" 
-                             alt="Roadside sign" 
-                             class="memoir-image">
-                        <p class="image-credit">
-                            Photo by <a href="https://unsplash.com/@nate_dumlao" target="_blank">Nathan Dumlao</a> on <a href="https://unsplash.com" target="_blank">Unsplash</a>
-                        </p>
-                    </div>
-                    
+
                     <p>I pursued a type of hardness for years, but it never fit. Now I realize that the strength I was looking for was always there, just waiting for me to stop feeling bad about it. I now see the world through my softness, which was once my shame. I am, at last, unarmored, but not unprotected, because of that recognition.</p>
+
+                    <!-- IMAGE 7: Open Hands — closing image, release and resolution -->
+                    <div class="memoir-image-container image-center image-reveal" style="max-width: 460px;">
+                        <img src="agustin-fernandez-liVdN7K6rj8-unsplash.jpg"
+                             alt="Open hands in soft, gentle light"
+                             class="memoir-image">
+                        <p class="image-credit">
+                            Photo by <a href="https://unsplash.com/@agustinfernandez" target="_blank" rel="noopener">Agustin Fernandez</a> on <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a>
+                        </p>
+                    </div>
+
                 </article>
             </div>
 
+            <div class="section-divider"></div>
+
             <!-- SLO Cards -->
-            <h3 class="font-serif text-2xl text-gray-400 mb-8 text-center tracking-widest uppercase text-xs">Student Learning Outcomes</h3>
+            <p class="font-sans text-[10px] tracking-[0.4em] uppercase text-gray-400 font-bold text-center mb-10">Student Learning Outcomes</p>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
                 <div class="slo-card h-[300px] rounded-[2rem] p-10 flex flex-col justify-center items-center text-center" onclick="openSLO('mwa1-slo1')">
                     <span class="text-6xl font-light text-gray-300 mb-4 font-serif">01</span>
                     <h4 class="font-serif text-2xl text-gray-800 mb-2">SLO 1</h4>
                     <p class="text-gray-400 text-sm">Rhetorical Knowledge</p>
-                    <span class="mt-6 text-xs text-primary uppercase tracking-widest">Click to write</span>
+                    <span class="mt-6 text-xs text-primary uppercase tracking-widest">Read reflection →</span>
                 </div>
                 
                 <div class="slo-card h-[300px] rounded-[2rem] p-10 flex flex-col justify-center items-center text-center" onclick="openSLO('mwa1-slo2')">
                     <span class="text-6xl font-light text-gray-300 mb-4 font-serif">02</span>
                     <h4 class="font-serif text-2xl text-gray-800 mb-2">SLO 2</h4>
-                    <p class="text-gray-400 text-sm">Critical Thinking</p>
-                    <span class="mt-6 text-xs text-primary uppercase tracking-widest">Click to write</span>
+                    <p class="text-gray-400 text-sm">Writing as a Process</p>
+                    <span class="mt-6 text-xs text-primary uppercase tracking-widest">Read reflection →</span>
                 </div>
                 
                 <div class="slo-card h-[300px] rounded-[2rem] p-10 flex flex-col justify-center items-center text-center" onclick="openSLO('mwa1-slo3')">
                     <span class="text-6xl font-light text-gray-300 mb-4 font-serif">03</span>
                     <h4 class="font-serif text-2xl text-gray-800 mb-2">SLO 3</h4>
-                    <p class="text-gray-400 text-sm">Composing Processes</p>
-                    <span class="mt-6 text-xs text-primary uppercase tracking-widest">Click to write</span>
-                </div>
-            </div>
-            
-            <!-- MWA 1 Analysis Section -->
-            <div class="mt-24 max-w-3xl mx-auto">
-                <h3 class="font-serif text-2xl text-gray-400 mb-8 text-center tracking-widest uppercase text-xs">Critical Analysis</h3>
-                <div class="space-y-8 text-gray-600 leading-relaxed">
-                    <p>In terms of rhetorical analysis, this project helped me realize that storytelling is never just about what you say; it's also about how you choose to say it. My memoir focuses on a sensitive topic for me: redefining sensitivity as strength. This made me aware of the significance of my presentation. After creating the memoir as a website using Visual Studio Code and uploading it to GitHub, I had to reconsider my audience. Readers are absorbing the narrative flow, images, pacing, and organization of the story in addition to the text. I deliberately used white space to allow the words to breathe. I chose a straightforward layout and gentler tones because I didn't want anything to overpower the story's emotional honesty. What emotions do I want to evoke in my audience? was what I needed to ask myself. Silent? Reflecting on the past? Recognition? That question guided every decision. This project taught me that rhetoric is more than just persuading people; it's also about constructing an experience that bolsters your argument.</p>
-                    
-                    <p>I felt that the outcomes of Writing as a Process were quite tangible during this assignment. My memoir wasn't polished or even immediately apparent when I first started. It began as a jumbled collection of thoughts, including recollections of being "too emotional," moments of self-doubt, and a turning point that I hadn't fully considered before. I had to sit with those thoughts before they made sense on paper. Drafting was uncomfortable at times because I had to confront some of my old self-perceptions. Going deeper, identifying the real cause of the conflict, and strengthening unclear passages were all necessary for revision. I found that the process had simply changed when I began designing the website. Layout changes affected the pace. Paragraph breaks changed the focus. Font choices also had an impact on tone. Peer review also reminded me that you can develop when you let other people see and comment on your work. This project reminded me that writing is dynamic, intricate, and sometimes messy, but that messiness is a necessary part of creating something valuable.</p>
-                    
-                    <p>Instead of conducting traditional academic research, I came to a different kind of discovery. I looked into my own theories. For years, I didn't wonder where the idea that sensitivity meant weakness came from. Writing this memoir required me to examine that story. I had to question why I believed emotional control was a sign of strength and why empathy felt like something to hide. That reflection turned into an inquiry. Writing allowed me to explore and transcend my own thoughts. I discovered something important in the process: the trait I had previously criticized in myself was what allowed me to build deep relationships with other people. This project turned into a life-changing event for me, going beyond simply completing a task. It acted as a reminder that writing can be a means of communication and self-discovery.</p>
+                    <p class="text-gray-400 text-sm">Critical Thinking & Inquiry</p>
+                    <span class="mt-6 text-xs text-primary uppercase tracking-widest">Read reflection →</span>
                 </div>
             </div>
         </section>
@@ -479,17 +490,17 @@
                 <div class="slo-card h-[300px] rounded-[2rem] p-10 flex flex-col justify-center items-center text-center" onclick="openSLO('mwa2-slo1')">
                     <span class="text-6xl font-light text-gray-200 mb-4 font-serif">01</span>
                     <h4 class="font-serif text-2xl text-gray-800 mb-2">SLO 1</h4>
-                    <span class="text-xs text-gray-300 uppercase tracking-widest">Click to write</span>
+                    <span class="text-xs text-gray-300 uppercase tracking-widest">Coming soon</span>
                 </div>
                 <div class="slo-card h-[300px] rounded-[2rem] p-10 flex flex-col justify-center items-center text-center" onclick="openSLO('mwa2-slo2')">
                     <span class="text-6xl font-light text-gray-200 mb-4 font-serif">02</span>
                     <h4 class="font-serif text-2xl text-gray-800 mb-2">SLO 2</h4>
-                    <span class="text-xs text-gray-300 uppercase tracking-widest">Click to write</span>
+                    <span class="text-xs text-gray-300 uppercase tracking-widest">Coming soon</span>
                 </div>
                 <div class="slo-card h-[300px] rounded-[2rem] p-10 flex flex-col justify-center items-center text-center" onclick="openSLO('mwa2-slo3')">
                     <span class="text-6xl font-light text-gray-200 mb-4 font-serif">03</span>
                     <h4 class="font-serif text-2xl text-gray-800 mb-2">SLO 3</h4>
-                    <span class="text-xs text-gray-300 uppercase tracking-widest">Click to write</span>
+                    <span class="text-xs text-gray-300 uppercase tracking-widest">Coming soon</span>
                 </div>
             </div>
         </section>
@@ -501,17 +512,17 @@
                 <div class="slo-card h-[300px] rounded-[2rem] p-10 flex flex-col justify-center items-center text-center" onclick="openSLO('mwa3-slo1')">
                     <span class="text-6xl font-light text-gray-200 mb-4 font-serif">01</span>
                     <h4 class="font-serif text-2xl text-gray-800 mb-2">SLO 1</h4>
-                    <span class="text-xs text-gray-300 uppercase tracking-widest">Click to write</span>
+                    <span class="text-xs text-gray-300 uppercase tracking-widest">Coming soon</span>
                 </div>
                 <div class="slo-card h-[300px] rounded-[2rem] p-10 flex flex-col justify-center items-center text-center" onclick="openSLO('mwa3-slo2')">
                     <span class="text-6xl font-light text-gray-200 mb-4 font-serif">02</span>
                     <h4 class="font-serif text-2xl text-gray-800 mb-2">SLO 2</h4>
-                    <span class="text-xs text-gray-300 uppercase tracking-widest">Click to write</span>
+                    <span class="text-xs text-gray-300 uppercase tracking-widest">Coming soon</span>
                 </div>
                 <div class="slo-card h-[300px] rounded-[2rem] p-10 flex flex-col justify-center items-center text-center" onclick="openSLO('mwa3-slo3')">
                     <span class="text-6xl font-light text-gray-200 mb-4 font-serif">03</span>
                     <h4 class="font-serif text-2xl text-gray-800 mb-2">SLO 3</h4>
-                    <span class="text-xs text-gray-300 uppercase tracking-widest">Click to write</span>
+                    <span class="text-xs text-gray-300 uppercase tracking-widest">Coming soon</span>
                 </div>
             </div>
         </section>
@@ -525,43 +536,59 @@
         <div class="mt-24 text-[9px] tracking-[0.3em] uppercase text-gray-300">© 2026 Bryan Ruano Rivera</div>
     </footer>
 
-    <!-- SLO Writing Modal -->
+    <!-- SLO Modal -->
     <div id="slo-modal" class="slo-modal">
         <div class="slo-content">
             <span class="close-btn" onclick="closeSLO()">&times;</span>
-            <h3 id="modal-title" class="font-serif text-4xl text-gray-900 mb-2"></h3>
-            <p id="modal-subtitle" class="text-gray-400 text-sm uppercase tracking-widest mb-12">Reflection Space</p>
-            
-            <textarea 
-                id="slo-textarea" 
-                class="w-full h-[400px] p-8 border border-gray-200 rounded-2xl focus:outline-none focus:border-primary resize-none text-gray-600 leading-relaxed"
-                placeholder="Start writing your reflection here..."
-            ></textarea>
-            
-            <div class="mt-6 flex justify-end space-x-4">
-                <button onclick="closeSLO()" class="px-6 py-3 text-gray-400 hover:text-gray-600 transition-colors text-sm uppercase tracking-widest">Cancel</button>
-                <button onclick="saveSLO()" class="px-8 py-3 bg-gray-900 text-white rounded-full hover:bg-primary transition-colors text-sm uppercase tracking-widest">Save</button>
+            <div class="slo-content-inner">
+                <p id="modal-label" class="font-sans text-[10px] tracking-[0.4em] uppercase text-primary font-bold mb-3"></p>
+                <h3 id="modal-title" class="font-serif text-4xl text-gray-900 mb-2"></h3>
+                <div class="w-16 h-px bg-gray-200 mb-10"></div>
+                <div id="modal-body" class="slo-body"></div>
             </div>
         </div>
     </div>
 
-    <!-- Scripts -->
     <script>
-        // Modal Functions
+        // ─── SLO content definitions ───────────────────────────────────────────
+        const sloData = {
+            'mwa1-slo1': {
+                label: 'MWA 1 — SLO 1',
+                title: 'Rhetorical Knowledge',
+                body: `<p>In terms of rhetorical analysis, this project helped me realize that storytelling is never just about what you say; it's also about how you choose to say it. My memoir focuses on a sensitive topic for me: redefining sensitivity as strength. This made me aware of the significance of my presentation. After creating the memoir as a website using Visual Studio Code and uploading it to GitHub, I had to reconsider my audience. Readers are absorbing the narrative flow, images, pacing, and organization of the story in addition to the text.</p>
+                <p>I deliberately used white space to allow the words to breathe. I chose a straightforward layout and gentler tones because I didn't want anything to overpower the story's emotional honesty. What emotions do I want to evoke in my audience? was what I needed to ask myself. Silent? Reflecting on the past? Recognition? That question guided every decision. This project taught me that rhetoric is more than just persuading people; it's also about constructing an experience that bolsters your argument.</p>`
+            },
+            'mwa1-slo2': {
+                label: 'MWA 1 — SLO 2',
+                title: 'Writing as a Process',
+                body: `<p>I felt that the outcomes of Writing as a Process were quite tangible during this assignment. My memoir wasn't polished or even immediately apparent when I first started. It began as a jumbled collection of thoughts, including recollections of being "too emotional," moments of self-doubt, and a turning point that I hadn't fully considered before. I had to sit with those thoughts before they made sense on paper.</p>
+                <p>Drafting was uncomfortable at times because I had to confront some of my old self-perceptions. Going deeper, identifying the real cause of the conflict, and strengthening unclear passages were all necessary for revision. I found that the process had simply changed when I began designing the website. Layout changes affected the pace. Paragraph breaks changed the focus. Font choices also had an impact on tone. Peer review also reminded me that you can develop when you let other people see and comment on your work. This project reminded me that writing is dynamic, intricate, and sometimes messy, but that messiness is a necessary part of creating something valuable.</p>`
+            },
+            'mwa1-slo3': {
+                label: 'MWA 1 — SLO 3',
+                title: 'Critical Thinking & Inquiry',
+                body: `<p>Instead of conducting traditional academic research, I came to a different kind of discovery. I looked into my own theories. For years, I didn't wonder where the idea that sensitivity meant weakness came from. Writing this memoir required me to examine that story. I had to question why I believed emotional control was a sign of strength and why empathy felt like something to hide.</p>
+                <p>That reflection turned into an inquiry. Writing allowed me to explore and transcend my own thoughts. I discovered something important in the process: the trait I had previously criticized in myself was what allowed me to build deep relationships with other people. This project turned into a life-changing event for me, going beyond simply completing a task. It acted as a reminder that writing can be a means of communication and self-discovery.</p>`
+            }
+        };
+
+        // ─── Modal open/close ──────────────────────────────────────────────────
         function openSLO(id) {
             const modal = document.getElementById('slo-modal');
-            const title = document.getElementById('modal-title');
-            const textarea = document.getElementById('slo-textarea');
-            
-            const parts = id.split('-');
-            const mwa = parts[0].toUpperCase();
-            const slo = parts[1].toUpperCase();
-            
-            title.textContent = `${mwa} — ${slo}`;
-            
-            const saved = localStorage.getItem(id);
-            textarea.value = saved || '';
-            
+            const data = sloData[id];
+
+            if (data) {
+                document.getElementById('modal-label').textContent = data.label;
+                document.getElementById('modal-title').textContent = data.title;
+                document.getElementById('modal-body').innerHTML = data.body;
+            } else {
+                // MWA 2 / MWA 3 placeholders
+                const parts = id.split('-');
+                document.getElementById('modal-label').textContent = `${parts[0].toUpperCase()} — ${parts[1].toUpperCase()}`;
+                document.getElementById('modal-title').textContent = 'Coming Soon';
+                document.getElementById('modal-body').innerHTML = '<p style="color:#aaa;font-style:italic;">This reflection will be added soon.</p>';
+            }
+
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
@@ -571,41 +598,25 @@
             document.body.style.overflow = 'auto';
         }
         
-        function saveSLO() {
-            const title = document.getElementById('modal-title').textContent;
-            const id = title.replace(' — ', '-').toLowerCase();
-            const textarea = document.getElementById('slo-textarea');
-            
-            localStorage.setItem(id, textarea.value);
-            closeSLO();
-        }
-        
         document.getElementById('slo-modal').addEventListener('click', function(e) {
             if (e.target === this) closeSLO();
         });
-        
-        // Intersection Observer for scroll-triggered image animations
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
-        
+
+        // ─── Scroll-triggered image reveal ────────────────────────────────────
         const imageObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0) scale(1)';
+                    entry.target.classList.add('visible');
                     observer.unobserve(entry.target);
                 }
             });
-        }, observerOptions);
+        }, {
+            root: null,
+            rootMargin: '0px 0px -60px 0px',
+            threshold: 0.08
+        });
         
-        // Observe all image containers for scroll-triggered reveal
-        document.querySelectorAll('.image-reveal').forEach((el) => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px) scale(0.97)';
-            el.style.transition = 'opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1), transform 0.8s cubic-bezier(0.23, 1, 0.32, 1)';
+        document.querySelectorAll('.image-reveal').forEach(el => {
             imageObserver.observe(el);
         });
     </script>
