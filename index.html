@@ -5,13 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bryan Ruano Rivera | Portfolio</title>
     
-    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Configure Tailwind -->
     <script>
         tailwind.config = {
             theme: {
@@ -38,331 +34,188 @@
             background-color: #f0f3f5;
             color: #333333;
         }
-        
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Cormorant Garamond', serif;
             font-weight: 400;
             line-height: 1.2;
         }
-        
-        /* Navigation Hover */
+
+        /* ── Nav dropdowns ── */
         .nav-item .dropdown { 
-            opacity: 0; 
-            visibility: hidden; 
-            transform: translateY(12px);
+            opacity: 0; visibility: hidden; transform: translateY(12px);
             transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
         }
-        .nav-item:hover .dropdown { 
-            opacity: 1; 
-            visibility: visible; 
-            transform: translateY(0); 
-        }
-        
-        /* Quote styling */
-        .quote-accent { 
-            color: #7a8b94; 
-            opacity: 0.2; 
-            font-size: 8rem; 
-            line-height: 0; 
-            position: absolute; 
-        }
-        
-        /* Card styling */
+        .nav-item:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+
+        /* ── Quote ── */
+        .quote-accent { color: #7a8b94; opacity: 0.2; font-size: 8rem; line-height: 0; position: absolute; }
+
+        /* ── SLO cards ── */
         .slo-card {
-            background: white;
-            border: 1px solid #e2e6e9;
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            cursor: pointer;
+            background: white; border: 1px solid #e2e6e9;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); cursor: pointer;
         }
         .slo-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 30px 60px -12px rgba(0,0,0,0.05);
             border-color: #d1d5db;
         }
-        
-        /* Modal */
+
+        /* ── Modal ── */
         .slo-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255,255,255,0.97);
-            backdrop-filter: blur(20px);
-            z-index: 100;
-            overflow-y: auto;
+            display: none; position: fixed; top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(255,255,255,0.97); backdrop-filter: blur(20px);
+            z-index: 100; overflow-y: auto;
         }
         .slo-modal.active {
-            display: flex;
-            align-items: flex-start;
-            justify-content: center;
+            display: flex; align-items: flex-start; justify-content: center;
             animation: modalFadeIn 0.4s cubic-bezier(0.23, 1, 0.32, 1) forwards;
         }
-        @keyframes modalFadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        .slo-content {
-            max-width: 800px;
-            width: 90%;
-            padding: 80px 60px;
-            position: relative;
-        }
+        @keyframes modalFadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .slo-content { max-width: 800px; width: 90%; padding: 80px 60px; position: relative; }
         .close-btn {
-            position: fixed;
-            top: 40px;
-            right: 40px;
-            font-size: 2rem;
-            color: #94a3b8;
-            cursor: pointer;
-            transition: color 0.3s;
-            line-height: 1;
+            position: fixed; top: 40px; right: 40px;
+            font-size: 2rem; color: #94a3b8; cursor: pointer;
+            transition: color 0.3s; line-height: 1;
         }
         .close-btn:hover { color: #1e293b; }
+        .slo-body { font-size: 1.05rem; line-height: 2; color: #475569; }
+        .slo-body p { margin-bottom: 1.75rem; }
+        .slo-content-inner { animation: contentSlideUp 0.5s cubic-bezier(0.23, 1, 0.32, 1) 0.1s both; }
+        @keyframes contentSlideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Modal content body text */
-        .slo-body {
-            font-size: 1.05rem;
-            line-height: 2;
-            color: #475569;
-        }
-        .slo-body p {
-            margin-bottom: 1.75rem;
-        }
-
-        /* Modal entry animation for content */
-        .slo-content-inner {
-            animation: contentSlideUp 0.5s cubic-bezier(0.23, 1, 0.32, 1) 0.1s both;
-        }
-        @keyframes contentSlideUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        /* Memoir typography */
-        .memoir-text {
-            line-height: 2;
-            font-size: 1.125rem;
-            color: #334155;
-        }
-        .memoir-text p {
-            margin-bottom: 1.5rem;
-            text-indent: 2rem;
-        }
+        /* ── Memoir prose ── */
+        .memoir-text { line-height: 2; font-size: 1.125rem; color: #334155; }
+        .memoir-text p { margin-bottom: 1.5rem; text-indent: 2rem; }
         .memoir-text p:first-of-type { text-indent: 0; }
         .memoir-text p:first-of-type::first-letter {
-            font-size: 4rem;
-            float: left;
-            line-height: 0.8;
-            padding-right: 0.5rem;
-            color: #7a8b94;
-            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem; float: left; line-height: 0.8;
+            padding-right: 0.5rem; color: #7a8b94; font-family: 'Cormorant Garamond', serif;
         }
-        
-        /* Intro statement styling */
+
+        /* ── Artist statement ── */
         .artist-statement {
-            border-left: 3px solid #7a8b94;
-            padding-left: 2rem;
-            margin-bottom: 4rem;
-            font-style: italic;
-            color: #556;
+            border-left: 3px solid #7a8b94; padding-left: 2rem;
+            margin-bottom: 4rem; font-style: italic; color: #556;
         }
-        
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in { animation: fadeIn 0.6s ease-out forwards; }
+
+        /* ── Animations ── */
+        @keyframes fadeIn  { from { opacity: 0; }              to { opacity: 1; } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fade-in  { animation: fadeIn  0.6s ease-out forwards; }
         .animate-slide-up { animation: slideUp 0.6s ease-out forwards; }
 
-        /* Image reveal */
+        /* ── Scroll-triggered image reveal ── */
         .image-reveal {
-            opacity: 0;
-            transform: translateY(20px) scale(0.97);
-            transition: opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1), transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+            opacity: 0; transform: translateY(20px) scale(0.97);
+            transition: opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1),
+                        transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
         }
-        .image-reveal.visible {
-            opacity: 1;
-            transform: translateY(0) scale(1);
+        .image-reveal.visible { opacity: 1; transform: translateY(0) scale(1); }
+
+        /* ════════════════════════════════════════════
+           IMAGE FRAME
+           A unified, minimal frame applied to every
+           photo in both MWA 1 and MWA 2. The thin
+           border + soft shadow keeps photos looking
+           intentional rather than dropped-in.
+        ════════════════════════════════════════════ */
+        .img-frame {
+            border: 1px solid #dedad5;
+            border-radius: 0.45rem;
+            overflow: hidden;
+            background: #fefefe;
+            box-shadow: 0 2px 14px rgba(0,0,0,0.04), 0 1px 3px rgba(0,0,0,0.03);
+            transition: box-shadow 0.55s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .img-frame:hover {
+            box-shadow: 0 8px 32px rgba(0,0,0,0.07), 0 2px 6px rgba(0,0,0,0.04);
+        }
+        .img-frame img {
+            width: 100%; height: auto; display: block;
+            /* Slight editorial desaturation — images feel cohesive, not raw */
+            filter: saturate(0.87) brightness(0.985);
+            transition: transform 0.65s cubic-bezier(0.23, 1, 0.32, 1),
+                        filter  0.65s ease;
+        }
+        .img-frame:hover img {
+            transform: scale(1.013);
+            filter: saturate(1) brightness(1);
+        }
+        .img-frame .img-caption {
+            font-size: 0.775rem; color: #aaa6a0;
+            font-style: italic; line-height: 1.55;
+            padding: 0.65rem 1rem; text-align: center;
+            border-top: 1px solid #edebe7;
+            letter-spacing: 0.01em;
+        }
+        .img-frame .img-caption .img-credit {
+            display: block; margin-top: 0.2rem;
+            font-size: 0.695rem; color: #c5c0ba;
         }
 
-        /* Image container styling */
-        .memoir-image-container {
-            margin: 2.5rem 0;
-            position: relative;
-        }
-        
-        .memoir-image {
-            width: 100%;
-            height: auto;
-            border-radius: 0.5rem;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-            transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-            display: block;
-        }
-        .memoir-image:hover {
-            transform: scale(1.01);
-        }
-        
-        /* Image credit styling */
-        .image-credit {
-            font-size: 0.75rem;
-            color: #aaa;
-            font-style: italic;
-            margin-top: 0.6rem;
-            text-align: center;
-            letter-spacing: 0.02em;
-        }
-        .image-credit a {
-            color: #aaa;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        .image-credit a:hover {
-            color: #7a8b94;
-        }
-        
-        /* Layout variations */
-        .image-right {
-            float: right;
-            width: 42%;
-            margin: 0.5rem 0 1.5rem 2rem;
-        }
-        .image-left {
-            float: left;
-            width: 42%;
-            margin: 0.5rem 2rem 1.5rem 0;
-        }
-        .image-center {
-            width: 100%;
-            max-width: 580px;
-            margin: 2.5rem auto;
-            display: block;
-            float: none;
-            clear: both;
-        }
-        .image-full {
-            width: 100%;
-            margin: 3rem 0;
-            float: none;
-            clear: both;
-        }
+        /* ── Memoir image layout helpers ── */
+        .memoir-image-container { margin: 2.5rem 0; position: relative; }
+        .image-right  { float: right; width: 42%; margin: 0.5rem 0 1.5rem 2rem; }
+        .image-left   { float: left;  width: 42%; margin: 0.5rem 2rem 1.5rem 0; }
+        .image-center { width: 100%; max-width: 560px; margin: 2.5rem auto; display: block; float: none; clear: both; }
+        .image-full   { width: 100%; margin: 3rem 0; float: none; clear: both; }
+        .clearfix::after { content: ""; display: table; clear: both; }
 
-        /* Clearfix */
-        .memoir-text p { overflow: hidden; }
-        .clearfix::after {
-            content: "";
-            display: table;
-            clear: both;
-        }
+        /* ── Section divider ── */
+        .section-divider { width: 60px; height: 1px; background: #d1d5db; margin: 5rem auto; }
 
-        /* Divider between sections */
-        .section-divider {
-            width: 60px;
-            height: 1px;
-            background: #d1d5db;
-            margin: 5rem auto;
-        }
-
-        /* Review typography */
-        .review-text {
-            line-height: 2;
-            font-size: 1.1rem;
-            color: #334155;
-        }
-        .review-text p {
-            margin-bottom: 1.5rem;
-        }
+        /* ── Review prose ── */
+        .review-text { line-height: 2; font-size: 1.1rem; color: #334155; }
+        .review-text p { margin-bottom: 1.5rem; }
         .review-text p:first-of-type { text-indent: 0; }
         .review-text p:first-of-type::first-letter {
-            font-size: 4rem;
-            float: left;
-            line-height: 0.8;
-            padding-right: 0.5rem;
-            color: #7a8b94;
-            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem; float: left; line-height: 0.8;
+            padding-right: 0.5rem; color: #7a8b94; font-family: 'Cormorant Garamond', serif;
         }
-
-        /* Review section headers */
         .review-subhead {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
-            font-weight: 500;
-            font-style: italic;
-            color: #333;
-            margin: 3rem 0 1.25rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid #e2e6e9;
+            font-size: 1.5rem; font-weight: 500; font-style: italic; color: #333;
+            margin: 3rem 0 1.25rem; padding-bottom: 0.5rem; border-bottom: 1px solid #e2e6e9;
         }
 
-        /* SOGC box */
+        /* ── Review image layout helpers ── */
+        .rv-full   { clear: both; margin: 3rem 0; }
+        .rv-right  { float: right; width: 44%; margin: 0.25rem 0 1.5rem 2rem; }
+        .rv-left   { float: left;  width: 44%; margin: 0.25rem 2rem 1.5rem 0; }
+        .rv-center { clear: both; max-width: 520px; margin: 2.75rem auto; }
+
+        /* ── SOGC box ── */
         .sogc-box {
-            background: rgba(122, 139, 148, 0.05);
-            border-left: 3px solid #7a8b94;
-            padding: 1.5rem 2rem;
-            margin-bottom: 3rem;
+            background: rgba(122,139,148,0.05); border-left: 3px solid #7a8b94;
+            padding: 1.5rem 2rem; margin-bottom: 3rem;
         }
         .sogc-box .label {
-            font-size: 0.65rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: #7a8b94;
-            font-weight: 700;
-            display: block;
-            margin-bottom: 0.75rem;
+            font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+            color: #7a8b94; font-weight: 700; display: block; margin-bottom: 0.75rem;
         }
-        .sogc-box p {
-            font-size: 0.95rem;
-            color: #556;
-            font-style: italic;
-            line-height: 1.85;
-            margin-bottom: 1rem;
-        }
+        .sogc-box p { font-size: 0.95rem; color: #556; font-style: italic; line-height: 1.85; margin-bottom: 1rem; }
         .sogc-box p:last-child { margin-bottom: 0; }
 
-        /* Works cited */
-        .works-cited {
-            margin-top: 4rem;
-            padding-top: 2rem;
-            border-top: 1px solid #e2e6e9;
-        }
-        .works-cited h4 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.3rem;
-            font-weight: 500;
-            margin-bottom: 1.5rem;
-        }
-        .works-cited ul {
-            list-style: none;
-            padding: 0;
-        }
-        .works-cited li {
-            font-size: 0.9rem;
-            line-height: 1.75;
-            color: #666;
-            margin-bottom: 1rem;
-            padding-left: 2rem;
-            text-indent: -2rem;
-        }
+        /* ── Works cited ── */
+        .works-cited { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid #e2e6e9; }
+        .works-cited h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 500; margin-bottom: 1.5rem; }
+        .works-cited ul { list-style: none; padding: 0; }
+        .works-cited li { font-size: 0.9rem; line-height: 1.75; color: #666; margin-bottom: 1rem; padding-left: 2rem; text-indent: -2rem; }
 
         html { scroll-behavior: smooth; }
     </style>
 </head>
 <body class="antialiased">
 
-    <!-- Navigation -->
+    <!-- ── Navigation ── -->
     <nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-xl border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-10 h-24 flex justify-between items-center">
             <span class="text-xl font-bold tracking-tight text-gray-900 font-serif">My Portfolio</span>
             <div class="flex space-x-12 text-[11px] uppercase tracking-[0.25em] font-bold text-gray-400">
                 <a href="#" class="hover:text-gray-900 transition-colors">Home</a>
-                
+
                 <div class="nav-item relative group">
                     <span class="cursor-default group-hover:text-gray-900 transition-colors">MWA 1</span>
                     <div class="dropdown absolute top-full left-0 mt-4 w-40 bg-white border border-gray-100 shadow-2xl rounded-2xl p-5 space-y-3">
@@ -393,7 +246,7 @@
         </div>
     </nav>
 
-    <!-- Header -->
+    <!-- ── Header ── -->
     <header class="min-h-screen flex flex-col justify-center items-center text-center px-6">
         <div class="animate-slide-up">
             <h1 class="font-serif text-7xl md:text-9xl text-gray-900 mb-8">Welcome.</h1>
@@ -402,7 +255,7 @@
         </div>
     </header>
 
-    <!-- Quote Section -->
+    <!-- ── Quote ── -->
     <section class="py-60 bg-gray-50/50">
         <div class="max-w-4xl mx-auto px-10 relative text-center">
             <span class="quote-accent font-serif left-0 -top-10">"</span>
@@ -413,16 +266,17 @@
         </div>
     </section>
 
-    <!-- Main Content -->
+    <!-- ── Main Content ── -->
     <main class="max-w-7xl mx-auto px-10 py-40 space-y-60">
-        
-        <!-- MWA 1: MEMOIR -->
+
+        <!-- ════════════════════════════════
+             MWA 1: MEMOIR
+        ════════════════════════════════ -->
         <section id="mwa1">
             <h2 class="font-serif text-5xl text-gray-900 mb-16">MWA 1: Memoir</h2>
-            
-            <!-- Full Memoir Draft -->
+
             <div class="max-w-3xl mx-auto mb-20">
-                
+
                 <!-- Artist's Statement -->
                 <div class="artist-statement mb-16">
                     <p class="text-lg leading-relaxed mb-4">
@@ -432,104 +286,120 @@
                         I chose structurally gradual realization over a single turning point in order to reflect how growth actually occurs. If I were to make any additional changes, I would engage with opposing points of view more directly to heighten the tension. All things considered, I made the best choice by maintaining an authoritative tone and presenting vulnerability as evidence rather than weakness.
                     </p>
                 </div>
-                
-                <!-- Memoir Title -->
+
+                <!-- Title -->
                 <h3 class="font-serif text-3xl text-gray-800 mb-2 text-center">The Power I Struggled to Concede</h3>
                 <div class="w-24 h-px bg-primary mx-auto mb-12"></div>
-                
-                <!-- Memoir Content -->
+
+                <!-- Memoir Body -->
                 <article class="memoir-text clearfix">
 
-                    <!-- IMAGE 1: Ceiling Fan -->
+                    <!-- IMG 1 — ceiling fan, floated right -->
                     <div class="memoir-image-container image-right image-reveal">
-                        <img src="ahmad-budi-38ugO5kSjsY-unsplash.jpg"
-                             alt="Ceiling fan, softly blurred overhead"
-                             class="memoir-image">
-                        <p class="image-credit">
-                            Photo by <a href="https://unsplash.com/@abass04" target="_blank" rel="noopener">Ahmad Budi</a> on <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a>
-                        </p>
+                        <div class="img-frame">
+                            <img src="ahmad-budi-38ugO5kSjsY-unsplash.jpg"
+                                 alt="Ceiling fan, softly blurred overhead">
+                            <p class="img-caption">
+                                Ceiling fan — a blur of ordinary life
+                                <span class="img-credit">Photo by Ahmad Budi on Unsplash</span>
+                            </p>
+                        </div>
                     </div>
 
                     <p>For the majority of my life, I thought that being sensitive was a weakness that needed to be fixed. After a long day, I can still see myself sitting by myself in my room while the ceiling fan hums a gentle, rhythmic blur overhead. The air was heavy. I played back a quick conversation from earlier, a thoughtless comment someone made and then forgot. But it resonated with me. "You're too personal," they accused, their words looping until they blended into my own voice. Too sentimental. Become more resilient. Somehow, I discovered that silence was a sign of strength. Being emotional meant losing control, and maintaining that composure was armor. I therefore taught myself to swallow what lingered and laugh off what hurt. I learned to remain motionless when something hurt until my only form of relaxation was numbness. Up until it didn't, it worked. The parts of me that were buried fermented instead of disappearing.</p>
 
-                    <!-- IMAGE 2: Shadows on Sofa -->
+                    <!-- IMG 2 — shadows on sofa, floated left -->
                     <div class="memoir-image-container image-left image-reveal">
-                        <img src="efe-kekikciler-APy5TV9HrVo-unsplash.jpg"
-                             alt="Sunlight casting shadows over a covered sofa"
-                             class="memoir-image">
-                        <p class="image-credit">
-                            Photo by <a href="https://unsplash.com/@mutanzom" target="_blank" rel="noopener">Efe Kekikciler</a> on <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a>
-                        </p>
+                        <div class="img-frame">
+                            <img src="efe-kekikciler-APy5TV9HrVo-unsplash.jpg"
+                                 alt="Sunlight casting shadows over a covered sofa">
+                            <p class="img-caption">
+                                Light and shadow — the quiet before things shift
+                                <span class="img-credit">Photo by Efe Kekikciler on Unsplash</span>
+                            </p>
+                        </div>
                     </div>
 
                     <p>Silently, almost by accident, the shift started. When I first started working with kids, I assumed it would be easy, just listening, guiding, and helping. But as time went on, I saw how they would come to me when they were feeling overburdened. On occasion, they would sit quietly next to me, their little shoulders shaking as they tried not to cry. On other occasions, they would express their entire range of emotions in fragmented sentences, including anger, frustration, and sadness.</p>
 
-                    <!-- IMAGE 3: Books by Window -->
+                    <!-- IMG 3 — books by window, centered pause -->
                     <div class="memoir-image-container image-center image-reveal">
-                        <img src="nathan-dumlao-41LeKielPIM-unsplash.jpg"
-                             alt="A stack of books resting beside a window"
-                             class="memoir-image">
-                        <p class="image-credit">
-                            Photo by <a href="https://unsplash.com/@nate_dumlao" target="_blank" rel="noopener">Nathan Dumlao</a> on <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a>
-                        </p>
+                        <div class="img-frame">
+                            <img src="nathan-dumlao-41LeKielPIM-unsplash.jpg"
+                                 alt="A stack of books resting beside a window">
+                            <p class="img-caption">
+                                Books by a window — patience learned through reading
+                                <span class="img-credit">Photo by Nathan Dumlao on Unsplash</span>
+                            </p>
+                        </div>
                     </div>
 
-                    <!-- IMAGE 4: Child & Adult Hands -->
+                    <!-- IMG 4 — child & adult hands, floated right beside classroom scene -->
                     <div class="memoir-image-container image-right image-reveal">
-                        <img src="ika-ika-2x-s8iKJfrI-unsplash.jpg"
-                             alt="Adult and child hands holding gently"
-                             class="memoir-image">
-                        <p class="image-credit">
-                            Photo by <a href="https://unsplash.com/@ika_ika" target="_blank" rel="noopener">ika ika</a> on <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a>
-                        </p>
+                        <div class="img-frame">
+                            <img src="ika-ika-2x-s8iKJfrI-unsplash.jpg"
+                                 alt="Adult and child hands holding gently">
+                            <p class="img-caption">
+                                A moment of presence — held, not fixed
+                                <span class="img-credit">Photo by ika ika on Unsplash</span>
+                            </p>
+                        </div>
                     </div>
 
                     <p>One afternoon, I was approached by a kid who was crying over something that adults would not think much of. The room smelled faintly of sanitizer and crayons. Chairs were scraping and someone was laughing too loudly, but in that small sphere beside us, nothing moved. They clenched their fists, their face flushed, and the shame started to creep in. I dropped to my knees beside them. "It's okay to feel upset," I said instead of brushing it off. Until their chest relaxed and their grip on the present relaxed, we stayed there, breathing wildly together.</p>
 
-                    <!-- IMAGE 5: Child Emotion B&W -->
+                    <!-- IMG 5 — child B&W, full width emotional weight -->
                     <div class="memoir-image-container image-full image-reveal">
-                        <img src="kazuend-BnRHU4DL_PM-unsplash.jpg"
-                             alt="A black and white photograph of a child"
-                             class="memoir-image">
-                        <p class="image-credit">
-                            Photo by <a href="https://unsplash.com/@kazuend" target="_blank" rel="noopener">kazuend</a> on <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a>
-                        </p>
+                        <div class="img-frame">
+                            <img src="kazuend-BnRHU4DL_PM-unsplash.jpg"
+                                 alt="A black and white photograph of a child">
+                            <p class="img-caption">
+                                Stillness before words
+                                <span class="img-credit">Photo by kazuend on Unsplash</span>
+                            </p>
+                        </div>
                     </div>
 
-                    <!-- IMAGE 6: Speedometer -->
+                    <!-- IMG 6 — speedometer, floated left beside driving-home paragraph -->
                     <div class="memoir-image-container image-left image-reveal">
-                        <img src="nathan-dumlao-2VqRX_qMC3E-unsplash.jpg"
-                             alt="Close-up of a car speedometer"
-                             class="memoir-image">
-                        <p class="image-credit">
-                            Photo by <a href="https://unsplash.com/@nate_dumlao" target="_blank" rel="noopener">Nathan Dumlao</a> on <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a>
-                        </p>
+                        <div class="img-frame">
+                            <img src="nathan-dumlao-2VqRX_qMC3E-unsplash.jpg"
+                                 alt="Close-up of a car speedometer">
+                            <p class="img-caption">
+                                The drive home — replaying what mattered
+                                <span class="img-credit">Photo by Nathan Dumlao on Unsplash</span>
+                            </p>
+                        </div>
                     </div>
 
                     <p>I kept playing back that brief conversation as I drove home. It struck me that the very trait I'd hidden, my softness, my instinct to feel too deeply, was exactly what made that moment possible. I picked up on details that others missed, like the hesitancy in someone's voice and the fact that silence can reveal more truth than words ever could. I wasn't weak because I was sensitive. It was a sort of awareness, a silent force that was steady and observant.</p>
 
                     <p>I still overthink things. I still replay conversations, wondering what I could have said. The distinction is that I no longer treat that inclination as a medical condition. Sensitivity is a skill that must be carried; it is not something that can be outgrown. I have learned the ability to speak it fluently. I still occasionally catch myself fighting the old toughening reflex. However, I then recall that true strength isn't about fighting against what moves you. It's allowing emotions to flow through you without allowing them to control you. It involves enduring discomfort long enough to grow from it rather than trying to hide it. Nothing about that is delicate.</p>
 
-                    <!-- IMAGE 8: Roadside Sign -->
+                    <!-- IMG 7 — roadside sign, centered penultimate pause -->
                     <div class="memoir-image-container image-center image-reveal">
-                        <img src="nathan-dumlao-kInCUNLOsss-unsplash.jpg"
-                             alt="A red and white sign at the side of a road"
-                             class="memoir-image">
-                        <p class="image-credit">
-                            Photo by <a href="https://unsplash.com/@nate_dumlao" target="_blank" rel="noopener">Nathan Dumlao</a> on <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a>
-                        </p>
+                        <div class="img-frame">
+                            <img src="nathan-dumlao-kInCUNLOsss-unsplash.jpg"
+                                 alt="A red and white sign at the side of a road">
+                            <p class="img-caption">
+                                A sign on the road — not every message is obvious
+                                <span class="img-credit">Photo by Nathan Dumlao on Unsplash</span>
+                            </p>
+                        </div>
                     </div>
 
                     <p>I pursued a type of hardness for years, but it never fit. Now I realize that the strength I was looking for was always there, just waiting for me to stop feeling bad about it. I now see the world through my softness, which was once my shame. I am, at last, unarmored, but not unprotected, because of that recognition.</p>
 
-                    <!-- IMAGE 7: Open Hands -->
+                    <!-- IMG 8 — open hands, centered closing image -->
                     <div class="memoir-image-container image-center image-reveal" style="max-width: 460px;">
-                        <img src="agustin-fernandez-liVdN7K7rj8-unsplash.jpg"
-                             alt="Open hands in soft, gentle light"
-                             class="memoir-image">
-                        <p class="image-credit">
-                            Photo by <a href="https://unsplash.com/@agustinfernandez" target="_blank" rel="noopener">Agustin Fernandez</a> on <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a>
-                        </p>
+                        <div class="img-frame">
+                            <img src="agustin-fernandez-liVdN7K7rj8-unsplash.jpg"
+                                 alt="Open hands in soft, gentle light">
+                            <p class="img-caption">
+                                Open — unarmored, not unprotected
+                                <span class="img-credit">Photo by Agustin Fernandez on Unsplash</span>
+                            </p>
+                        </div>
                     </div>
 
                 </article>
@@ -540,21 +410,18 @@
             <!-- SLO Cards -->
             <p class="font-sans text-[10px] tracking-[0.4em] uppercase text-gray-400 font-bold text-center mb-10">Student Learning Outcomes</p>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-
                 <div class="slo-card h-[300px] rounded-[2rem] p-10 flex flex-col justify-center items-center text-center" onclick="openSLO('mwa1-slo1')">
                     <span class="text-6xl font-light text-gray-300 mb-4 font-serif">01</span>
                     <h4 class="font-serif text-2xl text-gray-800 mb-2">SLO 1</h4>
                     <p class="text-gray-400 text-sm">Rhetorical Knowledge</p>
                     <span class="mt-6 text-xs text-primary uppercase tracking-widest">Read reflection →</span>
                 </div>
-                
                 <div class="slo-card h-[300px] rounded-[2rem] p-10 flex flex-col justify-center items-center text-center" onclick="openSLO('mwa1-slo2')">
                     <span class="text-6xl font-light text-gray-300 mb-4 font-serif">02</span>
                     <h4 class="font-serif text-2xl text-gray-800 mb-2">SLO 2</h4>
                     <p class="text-gray-400 text-sm">Writing as a Process</p>
                     <span class="mt-6 text-xs text-primary uppercase tracking-widest">Read reflection →</span>
                 </div>
-                
                 <div class="slo-card h-[300px] rounded-[2rem] p-10 flex flex-col justify-center items-center text-center" onclick="openSLO('mwa1-slo3')">
                     <span class="text-6xl font-light text-gray-300 mb-4 font-serif">03</span>
                     <h4 class="font-serif text-2xl text-gray-800 mb-2">SLO 3</h4>
@@ -564,14 +431,15 @@
             </div>
         </section>
 
-        <!-- MWA 2: MULTIMODAL REVIEW -->
+        <!-- ════════════════════════════════
+             MWA 2: MULTIMODAL REVIEW
+        ════════════════════════════════ -->
         <section id="mwa2">
             <h2 class="font-serif text-5xl text-gray-900 mb-16">MWA 2: Multimodal Review</h2>
-            
-            <!-- Full Review -->
+
             <div class="max-w-3xl mx-auto mb-20">
-                
-                <!-- SOGC Statement -->
+
+                <!-- SOGC -->
                 <div class="sogc-box">
                     <span class="label">Statement of Goals and Choices</span>
                     <p>
@@ -581,23 +449,34 @@
                         I had a specific reader in mind: someone who either passes this place without stopping, or someone new to the city who wants to find something beyond the obvious landmarks. I chose a website as the format because it let me make text and image work together — to show the atmosphere rather than just describe it. The site was built in Visual Studio Code and deployed through GitHub and Vercel. The design choices — the spacing, the minimalism, the restraint — were rhetorical choices as much as aesthetic ones. Nothing should be louder than it needs to be. Every choice should be deliberate.
                     </p>
                 </div>
-                
+
                 <!-- Review Title -->
                 <h3 class="font-serif text-3xl text-gray-800 mb-2 text-center">A Quiet Escape Within the City</h3>
                 <p class="text-center text-gray-400 italic mb-8">A Review of Tingley Beach, Albuquerque, NM</p>
                 <div class="w-24 h-px bg-primary mx-auto mb-12"></div>
-                
-                <!-- Review Content -->
+
+                <!-- Review Body -->
+                <!--
+                    IMAGE PATH NOTE
+                    These filenames contain spaces and special characters exactly as
+                    they exist in your GitHub repo. Most modern browsers and servers
+                    handle them fine. If an image still shows broken after pushing,
+                    rename the file to use hyphens (e.g. "Discover-Tingley-Beach.jpeg")
+                    and update the src here to match.
+                -->
                 <article class="review-text clearfix">
-                    
-                    <!-- IMAGE 1: Opening shot - FULL WIDTH FRAMED -->
-                    <div style="margin: 3rem 0; border: 1px solid #d1d5db; border-radius: 0.5rem; overflow: hidden; background: white;">
-                        <div style="width: 100%; height: 350px; background: linear-gradient(135deg, #e8e4e0 0%, #f0ebe6 100%); display: flex; align-items: center; justify-content: center; color: #999; font-size: 0.95rem;">
-                            [Image: Wide view of Tingley Beach]
+
+                    <!-- IMG 1 — opening, full width -->
+                    <div class="rv-full image-reveal">
+                        <div class="img-frame">
+                            <img src="Discover Tingley Beach in Albuquerque.jpeg"
+                                 alt="Wide view of Tingley Beach fishing ponds with the Rio Grande bosque in the background"
+                                 loading="lazy">
+                            <p class="img-caption">
+                                Tingley Beach — the eastern fishing ponds on a quiet weekday morning
+                                <span class="img-credit">Ocitres downloaded from Pinterest</span>
+                            </p>
                         </div>
-                        <p style="font-size: 0.85rem; color: #888; font-style: italic; padding: 1rem; margin: 0; text-align: center; border-top: 1px solid #e2e6e9;">
-                            Tingley Beach, Albuquerque — the eastern fishing ponds on a quiet weekday morning
-                        </p>
                     </div>
 
                     <p>The mood seemed deliberately low-key from the moment I got there.</p>
@@ -610,28 +489,34 @@
                         The sound of water running through the ponds drowned out everything else, mixing with distant conversations and the occasional bike passing along the path. No one was rushing. People were sitting or standing at the edges, watching the water, some fishing quietly, some not doing much of anything at all. The area didn't feel crowded, even though there were people scattered throughout. It felt shared without being too full — a distinction that's harder to find than it sounds in any city.
                     </p>
 
-                    <!-- IMAGE 2: Wildlife - RIGHT FLOAT -->
-                    <div style="float: right; width: 45%; margin: 0.5rem 0 1.5rem 2rem; border: 1px solid #d1d5db; border-radius: 0.5rem; overflow: hidden; background: white;">
-                        <div style="width: 100%; height: 280px; background: linear-gradient(135deg, #e8e4e0 0%, #f0ebe6 100%); display: flex; align-items: center; justify-content: center; color: #999; font-size: 0.9rem;">
-                            [Image: Geese & ducks]
+                    <!-- IMG 2 — wildlife, floated right -->
+                    <div class="rv-right image-reveal">
+                        <div class="img-frame">
+                            <img src="Tingley Beach.jpeg"
+                                 alt="Geese and ducks along the shoreline of the Tingley Beach fishing pond"
+                                 loading="lazy">
+                            <p class="img-caption">
+                                Resident geese — present year-round, unbothered
+                                <span class="img-credit">Ocitres downloaded from Pinterest</span>
+                            </p>
                         </div>
-                        <p style="font-size: 0.8rem; color: #888; font-style: italic; padding: 0.75rem; margin: 0; text-align: center; border-top: 1px solid #e2e6e9;">
-                            Resident geese on the eastern pond — present year-round, unbothered by visitors
-                        </p>
                     </div>
 
                     <p>
                         Tingley Beach sits on Tingley Drive Southwest, just south of Central Avenue and within walking distance of Old Town Albuquerque. It is managed by the City of Albuquerque's Parks and Recreation Department, and the ponds are regularly stocked through the New Mexico Urban Fishing Program — catfish and rainbow trout depending on the season (City of Albuquerque Parks and Recreation). The surrounding bosque, a ribbon of riparian forest that follows the Rio Grande, gives the area a canopy of cottonwood trees that shift color dramatically in fall and cast a layered shade in summer. The whole setup is, by any conventional measure, modest. That's not an insult.
                     </p>
 
-                    <!-- IMAGE 3: Bosque path - LEFT FLOAT -->
-                    <div style="float: left; width: 45%; margin: 0.5rem 2rem 1.5rem 0; border: 1px solid #d1d5db; border-radius: 0.5rem; overflow: hidden; background: white;">
-                        <div style="width: 100%; height: 280px; background: linear-gradient(135deg, #e8e4e0 0%, #f0ebe6 100%); display: flex; align-items: center; justify-content: center; color: #999; font-size: 0.9rem;">
-                            [Image: Bosque path]
+                    <!-- IMG 3 — bosque path, floated left beside "What Works" -->
+                    <div class="rv-left image-reveal">
+                        <div class="img-frame">
+                            <img src="Tingley Beach_ABQ. New Mexico.jpeg"
+                                 alt="Paved path through the Rio Grande bosque with cottonwood trees on both sides"
+                                 loading="lazy">
+                            <p class="img-caption">
+                                The main path — flat, open, shaded by cottonwood
+                                <span class="img-credit">Ocitres downloaded from Pinterest</span>
+                            </p>
                         </div>
-                        <p style="font-size: 0.8rem; color: #888; font-style: italic; padding: 0.75rem; margin: 0; text-align: center; border-top: 1px solid #e2e6e9;">
-                            The main path through the bosque — flat, accessible, and shaded by cottonwood
-                        </p>
                     </div>
 
                     <h4 class="review-subhead">What Works</h4>
@@ -648,14 +533,17 @@
                         Accessibility is also worth naming. The main path is paved and flat. There is no admission fee. You don't need gear or experience or a plan. You can stay for fifteen minutes or two hours, and the place accepts both without judgment. For families, the ponds and the geese provide immediate, low-effort engagement. For anyone who just needs somewhere to think without being interrupted, it offers that too.
                     </p>
 
-                    <!-- IMAGE 4: Late afternoon light - FULL WIDTH -->
-                    <div style="clear: both; margin: 3rem 0; border: 1px solid #d1d5db; border-radius: 0.5rem; overflow: hidden; background: white;">
-                        <div style="width: 100%; height: 350px; background: linear-gradient(135deg, #e8e4e0 0%, #f0ebe6 100%); display: flex; align-items: center; justify-content: center; color: #999; font-size: 0.95rem;">
-                            [Image: Late afternoon light]
+                    <!-- IMG 4 — late afternoon light, full width pivot -->
+                    <div class="rv-full image-reveal">
+                        <div class="img-frame">
+                            <img src="25 Best Things to Do in Albuquerque (NM) - The Crazy Tourist.jpeg"
+                                 alt="Late afternoon amber light on the surface of the Tingley Beach fishing pond"
+                                 loading="lazy">
+                            <p class="img-caption">
+                                Late afternoon on the eastern pond — light comes low and directional here, particular to the high desert
+                                <span class="img-credit">Ocitres downloaded from Pinterest</span>
+                            </p>
                         </div>
-                        <p style="font-size: 0.85rem; color: #888; font-style: italic; padding: 1rem; margin: 0; text-align: center; border-top: 1px solid #e2e6e9;">
-                            Late afternoon on the eastern pond — the light here comes low and directional, particular to the high desert
-                        </p>
                     </div>
 
                     <h4 class="review-subhead">What Falls Short</h4>
@@ -688,14 +576,17 @@
                         It works because it gives less on purpose. It is more valuable in its limits than it would be if it tried to do more. Tingley Beach is not a destination for people who want to be entertained. It is a destination for people who need somewhere to be without being expected to do anything about it. That's a rarer thing to find than it sounds.
                     </p>
 
-                    <!-- IMAGE 5: Detail shot - CENTER -->
-                    <div style="margin: 3rem auto; max-width: 500px; border: 1px solid #d1d5db; border-radius: 0.5rem; overflow: hidden; background: white;">
-                        <div style="width: 100%; height: 300px; background: linear-gradient(135deg, #e8e4e0 0%, #f0ebe6 100%); display: flex; align-items: center; justify-content: center; color: #999; font-size: 0.95rem;">
-                            [Image: Shoreline detail]
+                    <!-- IMG 5 — shoreline detail, centered closing -->
+                    <div class="rv-center image-reveal">
+                        <div class="img-frame">
+                            <img src="Tingley Beach Requires COOLA Sport Sunscreen Spray.jpeg"
+                                 alt="Close detail of the Tingley Beach shoreline"
+                                 loading="lazy">
+                            <p class="img-caption">
+                                A detail from the shoreline — the kind of thing you notice when nothing is demanding your attention
+                                <span class="img-credit">Ocitres downloaded from Pinterest</span>
+                            </p>
                         </div>
-                        <p style="font-size: 0.85rem; color: #888; font-style: italic; padding: 1rem; margin: 0; text-align: center; border-top: 1px solid #e2e6e9;">
-                            A detail from the shoreline — the kind of thing you notice when there's nothing demanding your attention
-                        </p>
                     </div>
 
                     <h4 class="review-subhead">Who Should Go</h4>
@@ -712,23 +603,9 @@
                     <div class="works-cited">
                         <h4>Works Cited</h4>
                         <ul>
-                            <li>
-                                City of Albuquerque Parks and Recreation. "Tingley Beach."
-                                <em>cabq.gov</em>,
-                                www.cabq.gov/parksandrecreation/parks/tingley-beach.
-                                Accessed 10 Mar. 2025.
-                            </li>
-                            <li>
-                                Kaplan, Rachel, and Stephen Kaplan.
-                                <em>The Experience of Nature: A Psychological Perspective</em>.
-                                Cambridge University Press, 1989.
-                            </li>
-                            <li>
-                                New Mexico Department of Game and Fish. "Urban Fishing Program."
-                                <em>wildlife.state.nm.us</em>,
-                                www.wildlife.state.nm.us/fishing/urban-fishing-program/.
-                                Accessed 10 Mar. 2025.
-                            </li>
+                            <li>City of Albuquerque Parks and Recreation. "Tingley Beach." <em>cabq.gov</em>, www.cabq.gov/parksandrecreation/parks/tingley-beach. Accessed 10 Mar. 2025.</li>
+                            <li>Kaplan, Rachel, and Stephen Kaplan. <em>The Experience of Nature: A Psychological Perspective</em>. Cambridge University Press, 1989.</li>
+                            <li>New Mexico Department of Game and Fish. "Urban Fishing Program." <em>wildlife.state.nm.us</em>, www.wildlife.state.nm.us/fishing/urban-fishing-program/. Accessed 10 Mar. 2025.</li>
                         </ul>
                     </div>
 
@@ -740,21 +617,18 @@
             <!-- SLO Cards -->
             <p class="font-sans text-[10px] tracking-[0.4em] uppercase text-gray-400 font-bold text-center mb-10">Student Learning Outcomes</p>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-
                 <div class="slo-card h-[300px] rounded-[2rem] p-10 flex flex-col justify-center items-center text-center" onclick="openSLO('mwa2-slo1')">
                     <span class="text-6xl font-light text-gray-300 mb-4 font-serif">01</span>
                     <h4 class="font-serif text-2xl text-gray-800 mb-2">SLO 1</h4>
                     <p class="text-gray-400 text-sm">Rhetorical Situation & Genre</p>
                     <span class="mt-6 text-xs text-primary uppercase tracking-widest">Read reflection →</span>
                 </div>
-                
                 <div class="slo-card h-[300px] rounded-[2rem] p-10 flex flex-col justify-center items-center text-center" onclick="openSLO('mwa2-slo2')">
                     <span class="text-6xl font-light text-gray-300 mb-4 font-serif">02</span>
                     <h4 class="font-serif text-2xl text-gray-800 mb-2">SLO 2</h4>
                     <p class="text-gray-400 text-sm">Writing as a Process</p>
                     <span class="mt-6 text-xs text-primary uppercase tracking-widest">Read reflection →</span>
                 </div>
-                
                 <div class="slo-card h-[300px] rounded-[2rem] p-10 flex flex-col justify-center items-center text-center" onclick="openSLO('mwa2-slo3')">
                     <span class="text-6xl font-light text-gray-300 mb-4 font-serif">03</span>
                     <h4 class="font-serif text-2xl text-gray-800 mb-2">SLO 3</h4>
@@ -764,7 +638,7 @@
             </div>
         </section>
 
-        <!-- MWA 3 Section -->
+        <!-- ── MWA 3 ── -->
         <section id="mwa3">
             <h2 class="font-serif text-5xl text-gray-900 mb-16">MWA 3</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -788,14 +662,14 @@
 
     </main>
 
-    <!-- Footer -->
+    <!-- ── Footer ── -->
     <footer class="py-32 border-t border-gray-100 text-center">
         <p class="text-[10px] tracking-[0.5em] uppercase text-gray-400 mb-6">Get In Touch</p>
         <a href="mailto:ruanobry@unm.edu" class="text-gray-600 hover:text-primary font-bold border-b border-transparent hover:border-gray-200 pb-1 transition-all">ruanobry@unm.edu</a>
         <div class="mt-24 text-[9px] tracking-[0.3em] uppercase text-gray-300">© 2026 Bryan Ruano Rivera</div>
     </footer>
 
-    <!-- SLO Modal -->
+    <!-- ── SLO Modal ── -->
     <div id="slo-modal" class="slo-modal">
         <div class="slo-content">
             <span class="close-btn" onclick="closeSLO()">&times;</span>
@@ -826,25 +700,24 @@
                 label: 'MWA 1 — SLO 3',
                 title: 'Critical Thinking & Inquiry',
                 body: `<p>This project required me to think critically about what sensitivity actually means and how it functions in the world. Rather than accepting the cultural narrative that sensitivity is weakness, I had to investigate my own experiences and ask deeper questions: What does strength actually look like? How does emotional awareness serve me? What am I trying to argue?</p>
-                <p>By working with children and observing how my sensitivity allowed me to connect with them, I was able to gather evidence for my argument. This taught me that critical thinking isn't just abstract—it's grounded in observation, reflection, and the willingness to challenge assumptions, including my own.</p>`
+                <p>By working with children and observing how my sensitivity allowed me to connect with them, I was able to gather evidence for my argument. This taught me that critical thinking isn't just abstract — it's grounded in observation, reflection, and the willingness to challenge assumptions, including my own.</p>`
             },
             'mwa2-slo1': {
                 label: 'MWA 2 — SLO 1',
                 title: 'Rhetorical Situation & Genre',
-                body: `<p>For this project, I had to understand my rhetorical situation deeply: Who am I writing for? What do they need to understand? What genre best serves my purpose? I chose a website as my medium because it allowed me to integrate text and image in ways that a traditional essay cannot. The website format itself became a rhetorical choice—the minimalism, the pacing, the white space all communicate something about Tingley Beach before the reader even reads a word.</p>
-                <p>My audience was specific: locals who overlook this place, and visitors seeking something beyond typical tourist attractions. I avoided promotional language and instead focused on presence and atmosphere. The genre of "review" typically sells or condemns, but I used it to invite reflection instead.</p>`
+                body: `<p>I had to think hard about how to show Tingley Beach in a way that was more than just descriptive. I didn't just want to explain what the place is — I wanted to show why it matters, especially to people who might not notice it or visitors who don't fully understand what Albuquerque feels like beyond its landmarks. That shaped how I balanced my own experience with evaluation. I tried to keep the tone reflective and grounded rather than promotional, so the reader could trust what I was saying. Because this is a multimodal review, I also thought about how visuals could strengthen the quiet, almost still emotional space that the place creates. The genre pushed me to back up my impressions with specific details while maintaining a narrative flow that makes the reader feel like they're there.</p>`
             },
             'mwa2-slo2': {
                 label: 'MWA 2 — SLO 2',
                 title: 'Writing as a Process',
-                body: `<p>This project required extensive research and revision. I visited Tingley Beach multiple times, taking notes on details—the light, the wildlife, the sounds, the way people moved through the space. I read academic research on urban green spaces to ground my personal observations in something larger. I drafted sections multiple times, cutting promotional language and replacing it with more precise, observational writing.</p>
-                <p>The process taught me that good writing about place requires both attention and inquiry: noticing carefully, then asking why what you noticed matters. Each revision brought me closer to capturing not just what Tingley Beach is, but what it feels like to be there.</p>`
+                body: `<p>This project taught me that writing doesn't happen all at once — it happens over time. My first thoughts about Tingley Beach were surface-level. The more I wrote, the more I focused on how the place made me feel rather than listing what it offered. Revision helped me cut repetition and get clearer on what I actually wanted to say. Feedback showed me where I thought something was clear but wasn't.</p>
+                <p>Even working on the layout was part of the process. The spacing, paragraph length, and structure all changed how the writing felt. It made me realize that writing isn't just about what you say — it's also about how it's received. This project taught me to be more patient with my own work, and more careful with each draft.</p>`
             },
             'mwa2-slo3': {
                 label: 'MWA 2 — SLO 3',
                 title: 'Critical Thinking & Inquiry',
                 body: `<p>This assignment pushed me to think critically about what makes a place valuable. Tingley Beach isn't flashy or famous, so I had to ask: What does it actually offer? Why is subtlety worth writing about? How do I convince someone that stillness has value in a culture that prizes entertainment and stimulation?</p>
-                <p>I also had to think critically about my own biases and assumptions. I had to question whether I was being honest about the place's limitations, or whether I was romanticizing it. That critical distance—the willingness to acknowledge both strengths and weaknesses—made the review more credible and more interesting.</p>`
+                <p>I also had to think critically about my own biases and assumptions. I had to question whether I was being honest about the place's limitations, or whether I was romanticizing it. That critical distance — the willingness to acknowledge both strengths and weaknesses — made the review more credible and more interesting.</p>`
             }
         };
 
@@ -857,14 +730,24 @@
                 document.getElementById('slo-modal').classList.add('active');
             }
         }
-
         function closeSLO() {
             document.getElementById('slo-modal').classList.remove('active');
         }
-
         document.getElementById('slo-modal').addEventListener('click', function(e) {
             if (e.target === this) closeSLO();
         });
+
+        /* Scroll-triggered image reveal */
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    revealObserver.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.08 });
+
+        document.querySelectorAll('.image-reveal').forEach(el => revealObserver.observe(el));
     </script>
 </body>
 </html>
