@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bryan Ruano Rivera | Portfolio</title>
-    
+
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <script>
         tailwind.config = {
             theme: {
@@ -27,21 +27,13 @@
             }
         }
     </script>
-    
+
     <style>
-        body {
-            font-family: 'Lato', sans-serif;
-            background-color: #f0f3f5;
-            color: #333333;
-        }
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 400;
-            line-height: 1.2;
-        }
+        body { font-family: 'Lato', sans-serif; background-color: #f0f3f5; color: #333333; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Cormorant Garamond', serif; font-weight: 400; line-height: 1.2; }
 
         /* ── Nav dropdowns ── */
-        .nav-item .dropdown { 
+        .nav-item .dropdown {
             opacity: 0; visibility: hidden; transform: translateY(12px);
             transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
         }
@@ -76,8 +68,7 @@
         .slo-content { max-width: 800px; width: 90%; padding: 80px 60px; position: relative; }
         .close-btn {
             position: fixed; top: 40px; right: 40px;
-            font-size: 2rem; color: #94a3b8; cursor: pointer;
-            transition: color 0.3s; line-height: 1;
+            font-size: 2rem; color: #94a3b8; cursor: pointer; transition: color 0.3s; line-height: 1;
         }
         .close-btn:hover { color: #1e293b; }
         .slo-body { font-size: 1.05rem; line-height: 2; color: #475569; }
@@ -95,10 +86,7 @@
         }
 
         /* ── Artist statement ── */
-        .artist-statement {
-            border-left: 3px solid #7a8b94; padding-left: 2rem;
-            margin-bottom: 4rem; font-style: italic; color: #556;
-        }
+        .artist-statement { border-left: 3px solid #7a8b94; padding-left: 2rem; margin-bottom: 4rem; font-style: italic; color: #556; }
 
         /* ── Animations ── */
         @keyframes fadeIn  { from { opacity: 0; }              to { opacity: 1; } }
@@ -106,54 +94,32 @@
         .animate-fade-in  { animation: fadeIn  0.6s ease-out forwards; }
         .animate-slide-up { animation: slideUp 0.6s ease-out forwards; }
 
-        /* ── Scroll-triggered image reveal ── */
+        /* ── Scroll-triggered reveal ── */
         .image-reveal {
             opacity: 0; transform: translateY(20px) scale(0.97);
-            transition: opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1),
-                        transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+            transition: opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1), transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
         }
         .image-reveal.visible { opacity: 1; transform: translateY(0) scale(1); }
 
-        /* ════════════════════════════════════════════
-           IMAGE FRAME
-           A unified, minimal frame applied to every
-           photo in both MWA 1 and MWA 2. The thin
-           border + soft shadow keeps photos looking
-           intentional rather than dropped-in.
-        ════════════════════════════════════════════ */
+        /* ── Image frame ── */
         .img-frame {
-            border: 1px solid #dedad5;
-            border-radius: 0.45rem;
-            overflow: hidden;
+            border: 1px solid #dedad5; border-radius: 0.45rem; overflow: hidden;
             background: #fefefe;
             box-shadow: 0 2px 14px rgba(0,0,0,0.04), 0 1px 3px rgba(0,0,0,0.03);
             transition: box-shadow 0.55s cubic-bezier(0.23, 1, 0.32, 1);
         }
-        .img-frame:hover {
-            box-shadow: 0 8px 32px rgba(0,0,0,0.07), 0 2px 6px rgba(0,0,0,0.04);
-        }
+        .img-frame:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.07), 0 2px 6px rgba(0,0,0,0.04); }
         .img-frame img {
             width: 100%; height: auto; display: block;
-            /* Slight editorial desaturation — images feel cohesive, not raw */
             filter: saturate(0.87) brightness(0.985);
-            transition: transform 0.65s cubic-bezier(0.23, 1, 0.32, 1),
-                        filter  0.65s ease;
+            transition: transform 0.65s cubic-bezier(0.23, 1, 0.32, 1), filter 0.65s ease;
         }
-        .img-frame:hover img {
-            transform: scale(1.013);
-            filter: saturate(1) brightness(1);
-        }
+        .img-frame:hover img { transform: scale(1.013); filter: saturate(1) brightness(1); }
         .img-frame .img-caption {
-            font-size: 0.775rem; color: #aaa6a0;
-            font-style: italic; line-height: 1.55;
-            padding: 0.65rem 1rem; text-align: center;
-            border-top: 1px solid #edebe7;
-            letter-spacing: 0.01em;
+            font-size: 0.775rem; color: #aaa6a0; font-style: italic; line-height: 1.55;
+            padding: 0.65rem 1rem; text-align: center; border-top: 1px solid #edebe7; letter-spacing: 0.01em;
         }
-        .img-frame .img-caption .img-credit {
-            display: block; margin-top: 0.2rem;
-            font-size: 0.695rem; color: #c5c0ba;
-        }
+        .img-frame .img-caption .img-credit { display: block; margin-top: 0.2rem; font-size: 0.695rem; color: #c5c0ba; }
 
         /* ── Memoir image layout helpers ── */
         .memoir-image-container { margin: 2.5rem 0; position: relative; }
@@ -175,9 +141,9 @@
             padding-right: 0.5rem; color: #7a8b94; font-family: 'Cormorant Garamond', serif;
         }
         .review-subhead {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem; font-weight: 500; font-style: italic; color: #333;
-            margin: 3rem 0 1.25rem; padding-bottom: 0.5rem; border-bottom: 1px solid #e2e6e9;
+            font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 500;
+            font-style: italic; color: #333; margin: 3rem 0 1.25rem;
+            padding-bottom: 0.5rem; border-bottom: 1px solid #e2e6e9;
         }
 
         /* ── Review image layout helpers ── */
@@ -203,6 +169,142 @@
         .works-cited h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 500; margin-bottom: 1.5rem; }
         .works-cited ul { list-style: none; padding: 0; }
         .works-cited li { font-size: 0.9rem; line-height: 1.75; color: #666; margin-bottom: 1rem; padding-left: 2rem; text-indent: -2rem; }
+
+        /* ════════════════════════════════════════════
+           MWA 3 — SPECIFIC COMPONENTS
+        ════════════════════════════════════════════ */
+
+        /* Profile body prose — same rhythm as memoir but no drop cap */
+        .profile-text { line-height: 2; font-size: 1.1rem; color: #334155; }
+        .profile-text p { margin-bottom: 1.5rem; }
+
+        /* Q&A Interview block */
+        .interview-block { margin: 3.5rem 0; }
+
+        .qa-pair {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0;
+            margin-bottom: 2.5rem;
+            border-left: 2px solid #e2e6e9;
+            padding-left: 1.75rem;
+            transition: border-color 0.3s ease;
+        }
+        .qa-pair:hover { border-color: #7a8b94; }
+
+        .qa-question {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            font-style: italic;
+            color: #7a8b94;
+            margin-bottom: 0.65rem;
+            line-height: 1.5;
+        }
+
+        .qa-answer {
+            font-size: 0.975rem;
+            line-height: 1.9;
+            color: #475569;
+        }
+
+        /* Interview footnote */
+        .interview-footnote {
+            margin-top: 3rem;
+            padding: 1.25rem 1.5rem;
+            background: rgba(122,139,148,0.04);
+            border: 1px solid #e8e4e0;
+            border-radius: 0.35rem;
+            font-size: 0.825rem;
+            color: #94a3a8;
+            line-height: 1.7;
+            font-style: italic;
+        }
+        .interview-footnote strong {
+            font-style: normal;
+            font-weight: 700;
+            color: #7a8b94;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            display: block;
+            margin-bottom: 0.4rem;
+        }
+
+        /* Multimodal placeholder / embed area */
+        .multimodal-block {
+            margin: 3.5rem 0;
+            border: 1px solid #e2e6e9;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            background: white;
+        }
+        .multimodal-inner {
+            padding: 3rem 2.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.25rem;
+            text-align: center;
+        }
+        .multimodal-icon {
+            width: 52px; height: 52px;
+            border-radius: 50%;
+            background: rgba(122,139,148,0.08);
+            border: 1px solid #e2e6e9;
+            display: flex; align-items: center; justify-content: center;
+            color: #7a8b94;
+        }
+        .multimodal-label {
+            font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+            color: #7a8b94; font-weight: 700;
+        }
+        .multimodal-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem; color: #334155; font-weight: 400;
+        }
+        .multimodal-desc {
+            font-size: 0.9rem; color: #94a3b8; line-height: 1.75; max-width: 440px;
+        }
+        .multimodal-caption {
+            padding: 0.85rem 1.5rem;
+            border-top: 1px solid #e2e6e9;
+            font-size: 0.8rem;
+            color: #aaa6a0;
+            font-style: italic;
+            text-align: center;
+        }
+
+        /* Audio embed (shown when file is provided) */
+        .audio-embed {
+            width: 100%;
+            padding: 1.5rem 2rem;
+        }
+        .audio-embed audio {
+            width: 100%;
+            outline: none;
+        }
+
+        /* SLO reflection paragraphs for MWA 3 inline section */
+        .slo-reflection-block { margin-top: 3.5rem; }
+        .slo-reflection-block h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.35rem; font-weight: 500; font-style: italic;
+            color: #334155; margin-bottom: 1.1rem;
+            padding-bottom: 0.5rem; border-bottom: 1px solid #e2e6e9;
+        }
+        .slo-reflection-block p { font-size: 0.975rem; line-height: 1.92; color: #475569; margin-bottom: 1.25rem; }
+        .slo-reflection-block p:last-child { margin-bottom: 0; }
+
+        /* Subject name callout used in profile */
+        .profile-subject {
+            display: inline-block;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.05rem;
+            font-style: italic;
+            font-weight: 500;
+            color: #7a8b94;
+        }
 
         html { scroll-behavior: smooth; }
     </style>
@@ -237,9 +339,9 @@
                 <div class="nav-item relative group">
                     <span class="cursor-default group-hover:text-gray-900 transition-colors">MWA 3</span>
                     <div class="dropdown absolute top-full left-0 mt-4 w-40 bg-white border border-gray-100 shadow-2xl rounded-2xl p-5 space-y-3">
-                        <a href="#mwa3-slo1" class="block hover:text-primary italic font-serif">slo 1</a>
-                        <a href="#mwa3-slo2" class="block hover:text-primary italic font-serif">slo 2</a>
-                        <a href="#mwa3-slo3" class="block hover:text-primary italic font-serif">slo 3</a>
+                        <a href="#mwa3" onclick="setTimeout(()=>openSLO('mwa3-slo1'),400)" class="block hover:text-primary italic font-serif">slo 1</a>
+                        <a href="#mwa3" onclick="setTimeout(()=>openSLO('mwa3-slo2'),400)" class="block hover:text-primary italic font-serif">slo 2</a>
+                        <a href="#mwa3" onclick="setTimeout(()=>openSLO('mwa3-slo3'),400)" class="block hover:text-primary italic font-serif">slo 3</a>
                     </div>
                 </div>
             </div>
@@ -276,8 +378,6 @@
             <h2 class="font-serif text-5xl text-gray-900 mb-16">MWA 1: Memoir</h2>
 
             <div class="max-w-3xl mx-auto mb-20">
-
-                <!-- Artist's Statement -->
                 <div class="artist-statement mb-16">
                     <p class="text-lg leading-relaxed mb-4">
                         This project compelled me to view vulnerability as an argument rather than a confession. Along with sharing a personal story, I wanted to demonstrate that sensitivity can be a strength if it is purposefully reframed. By focusing on restraint and clarity rather than relying on dramatic moments, I made sure that every detail supported a main point. I avoided using too much decorative language and exaggeration so that the message felt controlled rather than emotional for the sake of emotion.
@@ -287,88 +387,56 @@
                     </p>
                 </div>
 
-                <!-- Title -->
                 <h3 class="font-serif text-3xl text-gray-800 mb-2 text-center">The Power I Struggled to Concede</h3>
                 <div class="w-24 h-px bg-primary mx-auto mb-12"></div>
 
-                <!-- Memoir Body -->
                 <article class="memoir-text clearfix">
 
-                    <!-- IMG 1 — ceiling fan, floated right -->
                     <div class="memoir-image-container image-right image-reveal">
                         <div class="img-frame">
-                            <img src="ahmad-budi-38ugO5kSjsY-unsplash.jpg"
-                                 alt="Ceiling fan, softly blurred overhead">
-                            <p class="img-caption">
-                                Ceiling fan — a blur of ordinary life
-                                <span class="img-credit">Photo by Ahmad Budi on Unsplash</span>
-                            </p>
+                            <img src="ahmad-budi-38ugO5kSjsY-unsplash.jpg" alt="Ceiling fan, softly blurred overhead">
+                            <p class="img-caption">Ceiling fan — a blur of ordinary life<span class="img-credit">Photo by Ahmad Budi on Unsplash</span></p>
                         </div>
                     </div>
 
                     <p>For the majority of my life, I thought that being sensitive was a weakness that needed to be fixed. After a long day, I can still see myself sitting by myself in my room while the ceiling fan hums a gentle, rhythmic blur overhead. The air was heavy. I played back a quick conversation from earlier, a thoughtless comment someone made and then forgot. But it resonated with me. "You're too personal," they accused, their words looping until they blended into my own voice. Too sentimental. Become more resilient. Somehow, I discovered that silence was a sign of strength. Being emotional meant losing control, and maintaining that composure was armor. I therefore taught myself to swallow what lingered and laugh off what hurt. I learned to remain motionless when something hurt until my only form of relaxation was numbness. Up until it didn't, it worked. The parts of me that were buried fermented instead of disappearing.</p>
 
-                    <!-- IMG 2 — shadows on sofa, floated left -->
                     <div class="memoir-image-container image-left image-reveal">
                         <div class="img-frame">
-                            <img src="efe-kekikciler-APy5TV9HrVo-unsplash.jpg"
-                                 alt="Sunlight casting shadows over a covered sofa">
-                            <p class="img-caption">
-                                Light and shadow — the quiet before things shift
-                                <span class="img-credit">Photo by Efe Kekikciler on Unsplash</span>
-                            </p>
+                            <img src="efe-kekikciler-APy5TV9HrVo-unsplash.jpg" alt="Sunlight casting shadows over a covered sofa">
+                            <p class="img-caption">Light and shadow — the quiet before things shift<span class="img-credit">Photo by Efe Kekikciler on Unsplash</span></p>
                         </div>
                     </div>
 
                     <p>Silently, almost by accident, the shift started. When I first started working with kids, I assumed it would be easy, just listening, guiding, and helping. But as time went on, I saw how they would come to me when they were feeling overburdened. On occasion, they would sit quietly next to me, their little shoulders shaking as they tried not to cry. On other occasions, they would express their entire range of emotions in fragmented sentences, including anger, frustration, and sadness.</p>
 
-                    <!-- IMG 3 — books by window, centered pause -->
                     <div class="memoir-image-container image-center image-reveal">
                         <div class="img-frame">
-                            <img src="nathan-dumlao-41LeKielPIM-unsplash.jpg"
-                                 alt="A stack of books resting beside a window">
-                            <p class="img-caption">
-                                Books by a window — patience learned through reading
-                                <span class="img-credit">Photo by Nathan Dumlao on Unsplash</span>
-                            </p>
+                            <img src="nathan-dumlao-41LeKielPIM-unsplash.jpg" alt="A stack of books resting beside a window">
+                            <p class="img-caption">Books by a window — patience learned through reading<span class="img-credit">Photo by Nathan Dumlao on Unsplash</span></p>
                         </div>
                     </div>
 
-                    <!-- IMG 4 — child & adult hands, floated right beside classroom scene -->
                     <div class="memoir-image-container image-right image-reveal">
                         <div class="img-frame">
-                            <img src="ika-ika-2x-s8iKJfrI-unsplash.jpg"
-                                 alt="Adult and child hands holding gently">
-                            <p class="img-caption">
-                                A moment of presence — held, not fixed
-                                <span class="img-credit">Photo by ika ika on Unsplash</span>
-                            </p>
+                            <img src="ika-ika-2x-s8iKJfrI-unsplash.jpg" alt="Adult and child hands holding gently">
+                            <p class="img-caption">A moment of presence — held, not fixed<span class="img-credit">Photo by ika ika on Unsplash</span></p>
                         </div>
                     </div>
 
                     <p>One afternoon, I was approached by a kid who was crying over something that adults would not think much of. The room smelled faintly of sanitizer and crayons. Chairs were scraping and someone was laughing too loudly, but in that small sphere beside us, nothing moved. They clenched their fists, their face flushed, and the shame started to creep in. I dropped to my knees beside them. "It's okay to feel upset," I said instead of brushing it off. Until their chest relaxed and their grip on the present relaxed, we stayed there, breathing wildly together.</p>
 
-                    <!-- IMG 5 — child B&W, full width emotional weight -->
                     <div class="memoir-image-container image-full image-reveal">
                         <div class="img-frame">
-                            <img src="kazuend-BnRHU4DL_PM-unsplash.jpg"
-                                 alt="A black and white photograph of a child">
-                            <p class="img-caption">
-                                Stillness before words
-                                <span class="img-credit">Photo by kazuend on Unsplash</span>
-                            </p>
+                            <img src="kazuend-BnRHU4DL_PM-unsplash.jpg" alt="A black and white photograph of a child">
+                            <p class="img-caption">Stillness before words<span class="img-credit">Photo by kazuend on Unsplash</span></p>
                         </div>
                     </div>
 
-                    <!-- IMG 6 — speedometer, floated left beside driving-home paragraph -->
                     <div class="memoir-image-container image-left image-reveal">
                         <div class="img-frame">
-                            <img src="nathan-dumlao-2VqRX_qMC3E-unsplash.jpg"
-                                 alt="Close-up of a car speedometer">
-                            <p class="img-caption">
-                                The drive home — replaying what mattered
-                                <span class="img-credit">Photo by Nathan Dumlao on Unsplash</span>
-                            </p>
+                            <img src="nathan-dumlao-2VqRX_qMC3E-unsplash.jpg" alt="Close-up of a car speedometer">
+                            <p class="img-caption">The drive home — replaying what mattered<span class="img-credit">Photo by Nathan Dumlao on Unsplash</span></p>
                         </div>
                     </div>
 
@@ -376,29 +444,19 @@
 
                     <p>I still overthink things. I still replay conversations, wondering what I could have said. The distinction is that I no longer treat that inclination as a medical condition. Sensitivity is a skill that must be carried; it is not something that can be outgrown. I have learned the ability to speak it fluently. I still occasionally catch myself fighting the old toughening reflex. However, I then recall that true strength isn't about fighting against what moves you. It's allowing emotions to flow through you without allowing them to control you. It involves enduring discomfort long enough to grow from it rather than trying to hide it. Nothing about that is delicate.</p>
 
-                    <!-- IMG 7 — roadside sign, centered penultimate pause -->
                     <div class="memoir-image-container image-center image-reveal">
                         <div class="img-frame">
-                            <img src="nathan-dumlao-kInCUNLOsss-unsplash.jpg"
-                                 alt="A red and white sign at the side of a road">
-                            <p class="img-caption">
-                                A sign on the road — not every message is obvious
-                                <span class="img-credit">Photo by Nathan Dumlao on Unsplash</span>
-                            </p>
+                            <img src="nathan-dumlao-kInCUNLOsss-unsplash.jpg" alt="A red and white sign at the side of a road">
+                            <p class="img-caption">A sign on the road — not every message is obvious<span class="img-credit">Photo by Nathan Dumlao on Unsplash</span></p>
                         </div>
                     </div>
 
                     <p>I pursued a type of hardness for years, but it never fit. Now I realize that the strength I was looking for was always there, just waiting for me to stop feeling bad about it. I now see the world through my softness, which was once my shame. I am, at last, unarmored, but not unprotected, because of that recognition.</p>
 
-                    <!-- IMG 8 — open hands, centered closing image -->
                     <div class="memoir-image-container image-center image-reveal" style="max-width: 460px;">
                         <div class="img-frame">
-                            <img src="agustin-fernandez-liVdN7K7rj8-unsplash.jpg"
-                                 alt="Open hands in soft, gentle light">
-                            <p class="img-caption">
-                                Open — unarmored, not unprotected
-                                <span class="img-credit">Photo by Agustin Fernandez on Unsplash</span>
-                            </p>
+                            <img src="agustin-fernandez-liVdN7K7rj8-unsplash.jpg" alt="Open hands in soft, gentle light">
+                            <p class="img-caption">Open — unarmored, not unprotected<span class="img-credit">Photo by Agustin Fernandez on Unsplash</span></p>
                         </div>
                     </div>
 
@@ -407,7 +465,6 @@
 
             <div class="section-divider"></div>
 
-            <!-- SLO Cards -->
             <p class="font-sans text-[10px] tracking-[0.4em] uppercase text-gray-400 font-bold text-center mb-10">Student Learning Outcomes</p>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="slo-card h-[300px] rounded-[2rem] p-10 flex flex-col justify-center items-center text-center" onclick="openSLO('mwa1-slo1')">
@@ -438,8 +495,6 @@
             <h2 class="font-serif text-5xl text-gray-900 mb-16">MWA 2: Multimodal Review</h2>
 
             <div class="max-w-3xl mx-auto mb-20">
-
-                <!-- SOGC -->
                 <div class="sogc-box">
                     <span class="label">Statement of Goals and Choices</span>
                     <p>
@@ -450,156 +505,73 @@
                     </p>
                 </div>
 
-                <!-- Review Title -->
                 <h3 class="font-serif text-3xl text-gray-800 mb-2 text-center">A Quiet Escape Within the City</h3>
                 <p class="text-center text-gray-400 italic mb-8">A Review of Tingley Beach, Albuquerque, NM</p>
                 <div class="w-24 h-px bg-primary mx-auto mb-12"></div>
 
-                <!-- Review Body -->
-                <!--
-                    IMAGE PATH NOTE
-                    These filenames contain spaces and special characters exactly as
-                    they exist in your GitHub repo. Most modern browsers and servers
-                    handle them fine. If an image still shows broken after pushing,
-                    rename the file to use hyphens (e.g. "Discover-Tingley-Beach.jpeg")
-                    and update the src here to match.
-                -->
                 <article class="review-text clearfix">
 
-                    <!-- IMG 1 — opening, full width -->
                     <div class="rv-full image-reveal">
                         <div class="img-frame">
-                            <img src="Discover Tingley Beach in Albuquerque.jpeg"
-                                 alt="Wide view of Tingley Beach fishing ponds with the Rio Grande bosque in the background"
-                                 loading="lazy">
-                            <p class="img-caption">
-                                Tingley Beach — the eastern fishing ponds on a quiet weekday morning
-                                <span class="img-credit">Ocitres downloaded from Pinterest</span>
-                            </p>
+                            <img src="Discover Tingley Beach in Albuquerque.jpeg" alt="Wide view of Tingley Beach fishing ponds" loading="lazy">
+                            <p class="img-caption">Tingley Beach — the eastern fishing ponds on a quiet weekday morning<span class="img-credit">Ocitres downloaded from Pinterest</span></p>
                         </div>
                     </div>
 
                     <p>The mood seemed deliberately low-key from the moment I got there.</p>
+                    <p>I didn't go looking for something to do at Tingley Beach. I went because I had time and it was close, which, I later realized, is exactly the right reason to go. There are no entrance gates, no schedules, no sense that anyone is waiting for you to arrive or watching for when you leave. You park, you walk toward the water, and the place opens up quietly — a series of fishing ponds along the Rio Grande bosque, connected by a flat paved path lined with cottonwood trees that have clearly been there longer than any of the surrounding infrastructure.</p>
+                    <p>The sound of water running through the ponds drowned out everything else, mixing with distant conversations and the occasional bike passing along the path. No one was rushing. People were sitting or standing at the edges, watching the water, some fishing quietly, some not doing much of anything at all. The area didn't feel crowded, even though there were people scattered throughout. It felt shared without being too full — a distinction that's harder to find than it sounds in any city.</p>
 
-                    <p>
-                        I didn't go looking for something to do at Tingley Beach. I went because I had time and it was close, which, I later realized, is exactly the right reason to go. There are no entrance gates, no schedules, no sense that anyone is waiting for you to arrive or watching for when you leave. You park, you walk toward the water, and the place opens up quietly — a series of fishing ponds along the Rio Grande bosque, connected by a flat paved path lined with cottonwood trees that have clearly been there longer than any of the surrounding infrastructure.
-                    </p>
-
-                    <p>
-                        The sound of water running through the ponds drowned out everything else, mixing with distant conversations and the occasional bike passing along the path. No one was rushing. People were sitting or standing at the edges, watching the water, some fishing quietly, some not doing much of anything at all. The area didn't feel crowded, even though there were people scattered throughout. It felt shared without being too full — a distinction that's harder to find than it sounds in any city.
-                    </p>
-
-                    <!-- IMG 2 — wildlife, floated right -->
                     <div class="rv-right image-reveal">
                         <div class="img-frame">
-                            <img src="Tingley Beach.jpeg"
-                                 alt="Geese and ducks along the shoreline of the Tingley Beach fishing pond"
-                                 loading="lazy">
-                            <p class="img-caption">
-                                Resident geese — present year-round, unbothered
-                                <span class="img-credit">Ocitres downloaded from Pinterest</span>
-                            </p>
+                            <img src="Tingley Beach.jpeg" alt="Geese and ducks along the shoreline" loading="lazy">
+                            <p class="img-caption">Resident geese — present year-round, unbothered<span class="img-credit">Ocitres downloaded from Pinterest</span></p>
                         </div>
                     </div>
 
-                    <p>
-                        Tingley Beach sits on Tingley Drive Southwest, just south of Central Avenue and within walking distance of Old Town Albuquerque. It is managed by the City of Albuquerque's Parks and Recreation Department, and the ponds are regularly stocked through the New Mexico Urban Fishing Program — catfish and rainbow trout depending on the season (City of Albuquerque Parks and Recreation). The surrounding bosque, a ribbon of riparian forest that follows the Rio Grande, gives the area a canopy of cottonwood trees that shift color dramatically in fall and cast a layered shade in summer. The whole setup is, by any conventional measure, modest. That's not an insult.
-                    </p>
+                    <p>Tingley Beach sits on Tingley Drive Southwest, just south of Central Avenue and within walking distance of Old Town Albuquerque. It is managed by the City of Albuquerque's Parks and Recreation Department, and the ponds are regularly stocked through the New Mexico Urban Fishing Program — catfish and rainbow trout depending on the season (City of Albuquerque Parks and Recreation). The surrounding bosque, a ribbon of riparian forest that follows the Rio Grande, gives the area a canopy of cottonwood trees that shift color dramatically in fall and cast a layered shade in summer. The whole setup is, by any conventional measure, modest. That's not an insult.</p>
 
-                    <!-- IMG 3 — bosque path, floated left beside "What Works" -->
                     <div class="rv-left image-reveal">
                         <div class="img-frame">
-                            <img src="Tingley Beach_ABQ. New Mexico.jpeg"
-                                 alt="Paved path through the Rio Grande bosque with cottonwood trees on both sides"
-                                 loading="lazy">
-                            <p class="img-caption">
-                                The main path — flat, open, shaded by cottonwood
-                                <span class="img-credit">Ocitres downloaded from Pinterest</span>
-                            </p>
+                            <img src="Tingley Beach_ABQ. New Mexico.jpeg" alt="Paved path through the bosque" loading="lazy">
+                            <p class="img-caption">The main path — flat, open, shaded by cottonwood<span class="img-credit">Ocitres downloaded from Pinterest</span></p>
                         </div>
                     </div>
 
                     <h4 class="review-subhead">What Works</h4>
+                    <p>What Tingley Beach does well is harder to name than it sounds, because most of it is about atmosphere rather than amenities. The wildlife is the clearest example: geese, ducks, great blue herons, and snowy egrets move through the space with the kind of indifference to human presence that makes the encounters feel natural rather than staged. You don't get the sense that the animals are there for you. That makes watching them feel like something you earned just by showing up quietly.</p>
+                    <p>The wide-open landscape and the constant presence of water make it feel like you're not fully in the city anymore — not in a dramatic, wilderness kind of way, but in a softer sense. The place makes Albuquerque feel less harsh. The background noise from Tingley Drive doesn't disappear, but the water and the trees pull your attention away from it in a way that is almost unconscious. Research on urban green spaces consistently supports the idea that proximity to natural environments — even modest, imperfect ones — reduces stress and helps restore focused attention (Kaplan and Kaplan 178). Tingley Beach earns that without trying particularly hard, which might be why it works.</p>
+                    <p>Accessibility is also worth naming. The main path is paved and flat. There is no admission fee. You don't need gear or experience or a plan. You can stay for fifteen minutes or two hours, and the place accepts both without judgment. For families, the ponds and the geese provide immediate, low-effort engagement. For anyone who just needs somewhere to think without being interrupted, it offers that too.</p>
 
-                    <p>
-                        What Tingley Beach does well is harder to name than it sounds, because most of it is about atmosphere rather than amenities. The wildlife is the clearest example: geese, ducks, great blue herons, and snowy egrets move through the space with the kind of indifference to human presence that makes the encounters feel natural rather than staged. You don't get the sense that the animals are there for you. That makes watching them feel like something you earned just by showing up quietly.
-                    </p>
-
-                    <p>
-                        The wide-open landscape and the constant presence of water make it feel like you're not fully in the city anymore — not in a dramatic, wilderness kind of way, but in a softer sense. The place makes Albuquerque feel less harsh. The background noise from Tingley Drive doesn't disappear, but the water and the trees pull your attention away from it in a way that is almost unconscious. Research on urban green spaces consistently supports the idea that proximity to natural environments — even modest, imperfect ones — reduces stress and helps restore focused attention (Kaplan and Kaplan 178). Tingley Beach earns that without trying particularly hard, which might be why it works.
-                    </p>
-
-                    <p>
-                        Accessibility is also worth naming. The main path is paved and flat. There is no admission fee. You don't need gear or experience or a plan. You can stay for fifteen minutes or two hours, and the place accepts both without judgment. For families, the ponds and the geese provide immediate, low-effort engagement. For anyone who just needs somewhere to think without being interrupted, it offers that too.
-                    </p>
-
-                    <!-- IMG 4 — late afternoon light, full width pivot -->
                     <div class="rv-full image-reveal">
                         <div class="img-frame">
-                            <img src="25 Best Things to Do in Albuquerque (NM) - The Crazy Tourist.jpeg"
-                                 alt="Late afternoon amber light on the surface of the Tingley Beach fishing pond"
-                                 loading="lazy">
-                            <p class="img-caption">
-                                Late afternoon on the eastern pond — light comes low and directional here, particular to the high desert
-                                <span class="img-credit">Ocitres downloaded from Pinterest</span>
-                            </p>
+                            <img src="25 Best Things to Do in Albuquerque (NM) - The Crazy Tourist.jpeg" alt="Late afternoon amber light on the pond" loading="lazy">
+                            <p class="img-caption">Late afternoon on the eastern pond — light comes low and directional, particular to the high desert<span class="img-credit">Ocitres downloaded from Pinterest</span></p>
                         </div>
                     </div>
 
                     <h4 class="review-subhead">What Falls Short</h4>
-
-                    <p>
-                        The place does have some limits. Parts of the area feel like they haven't been maintained as carefully as they could be — worn benches, occasional litter near the parking lot, signage that seems like it hasn't been updated in a while. There were moments when the simplicity of the surroundings edged toward feeling blank rather than calm, a distinction that depends entirely on what you brought with you when you walked in.
-                    </p>
-
-                    <p>
-                        The size is a real constraint. The main path completes itself quickly. If you want a full morning's worth of outdoor activity, Tingley Beach alone won't give you that — it pairs well with the nearby Rio Grande Nature Center or the Bosque Trail, but it functions best as part of something rather than the whole thing. It can also feel too quiet for visitors who want more variety or structure in how they spend time outside. That's not a flaw exactly, but it is a limit worth knowing before you go.
-                    </p>
-
-                    <p>
-                        Parking is a minor friction that adds up: the lot is small, the entrance is easy to miss, and street parking along Tingley Drive requires patience. The place doesn't advertise itself, which is part of its character — but it means first visits can feel more disorienting than they should.
-                    </p>
+                    <p>The place does have some limits. Parts of the area feel like they haven't been maintained as carefully as they could be — worn benches, occasional litter near the parking lot, signage that seems like it hasn't been updated in a while. There were moments when the simplicity of the surroundings edged toward feeling blank rather than calm, a distinction that depends entirely on what you brought with you when you walked in.</p>
+                    <p>The size is a real constraint. The main path completes itself quickly. If you want a full morning's worth of outdoor activity, Tingley Beach alone won't give you that — it pairs well with the nearby Rio Grande Nature Center or the Bosque Trail, but it functions best as part of something rather than the whole thing. It can also feel too quiet for visitors who want more variety or structure in how they spend time outside. That's not a flaw exactly, but it is a limit worth knowing before you go.</p>
+                    <p>Parking is a minor friction that adds up: the lot is small, the entrance is easy to miss, and street parking along Tingley Drive requires patience. The place doesn't advertise itself, which is part of its character — but it means first visits can feel more disorienting than they should.</p>
 
                     <h4 class="review-subhead">Being There</h4>
-
                     <p>The part I keep thinking about is simpler than any of this.</p>
+                    <p>I sat near the eastern pond on a weekday afternoon and watched a pair of mallards work the shoreline. The cottonwood trees along the bank were still mostly bare — early in the season, the kind of day where spring is suggested but not confirmed. The light was low and amber, particular to the desert in that hour before it shifts, and it turned the surface of the water into something closer to copper than blue.</p>
+                    <p>I stayed longer than I planned. Nothing was happening that required my attention. There was no event, no performance, no reason to stay past what I'd intended. And yet leaving felt premature. That quality — the way the place held me without asking anything of me — is what I think Tingley Beach actually offers, and it's harder to explain than it should be.</p>
+                    <p>It works because it gives less on purpose. It is more valuable in its limits than it would be if it tried to do more. Tingley Beach is not a destination for people who want to be entertained. It is a destination for people who need somewhere to be without being expected to do anything about it. That's a rarer thing to find than it sounds.</p>
 
-                    <p>
-                        I sat near the eastern pond on a weekday afternoon and watched a pair of mallards work the shoreline. The cottonwood trees along the bank were still mostly bare — early in the season, the kind of day where spring is suggested but not confirmed. The light was low and amber, particular to the desert in that hour before it shifts, and it turned the surface of the water into something closer to copper than blue.
-                    </p>
-
-                    <p>
-                        I stayed longer than I planned. Nothing was happening that required my attention. There was no event, no performance, no reason to stay past what I'd intended. And yet leaving felt premature. That quality — the way the place held me without asking anything of me — is what I think Tingley Beach actually offers, and it's harder to explain than it should be.
-                    </p>
-
-                    <p>
-                        It works because it gives less on purpose. It is more valuable in its limits than it would be if it tried to do more. Tingley Beach is not a destination for people who want to be entertained. It is a destination for people who need somewhere to be without being expected to do anything about it. That's a rarer thing to find than it sounds.
-                    </p>
-
-                    <!-- IMG 5 — shoreline detail, centered closing -->
                     <div class="rv-center image-reveal">
                         <div class="img-frame">
-                            <img src="Tingley Beach Requires COOLA Sport Sunscreen Spray.jpeg"
-                                 alt="Close detail of the Tingley Beach shoreline"
-                                 loading="lazy">
-                            <p class="img-caption">
-                                A detail from the shoreline — the kind of thing you notice when nothing is demanding your attention
-                                <span class="img-credit">Ocitres downloaded from Pinterest</span>
-                            </p>
+                            <img src="Tingley Beach Requires COOLA Sport Sunscreen Spray.jpeg" alt="Close detail of the Tingley Beach shoreline" loading="lazy">
+                            <p class="img-caption">A detail from the shoreline — the kind of thing you notice when nothing is demanding your attention<span class="img-credit">Ocitres downloaded from Pinterest</span></p>
                         </div>
                     </div>
 
                     <h4 class="review-subhead">Who Should Go</h4>
+                    <p>If you live in Albuquerque and you've never stopped here — which, statistically, is likely — it's worth an afternoon. You don't need a specific reason. Bring fishing gear if you have it, or don't. If you're visiting the city and looking for something that isn't on the standard itinerary, Tingley Beach is the kind of place that makes Albuquerque feel lived-in rather than curated. Children do well here: the geese create their own drama, the water holds attention naturally, and the path is easy enough that no one needs to be carried.</p>
+                    <p>It won't appear on any shortlist of Albuquerque's highlights. That's partly what makes it worth visiting. Some places don't make demands. They simply exist in the particular way that overlooked places do — and if you slow down long enough, they're usually saying something.</p>
 
-                    <p>
-                        If you live in Albuquerque and you've never stopped here — which, statistically, is likely — it's worth an afternoon. You don't need a specific reason. Bring fishing gear if you have it, or don't. If you're visiting the city and looking for something that isn't on the standard itinerary, Tingley Beach is the kind of place that makes Albuquerque feel lived-in rather than curated. Children do well here: the geese create their own drama, the water holds attention naturally, and the path is easy enough that no one needs to be carried.
-                    </p>
-
-                    <p>
-                        It won't appear on any shortlist of Albuquerque's highlights. That's partly what makes it worth visiting. Some places don't make demands. They simply exist in the particular way that overlooked places do — and if you slow down long enough, they're usually saying something.
-                    </p>
-
-                    <!-- Works Cited -->
                     <div class="works-cited">
                         <h4>Works Cited</h4>
                         <ul>
@@ -614,7 +586,6 @@
 
             <div class="section-divider"></div>
 
-            <!-- SLO Cards -->
             <p class="font-sans text-[10px] tracking-[0.4em] uppercase text-gray-400 font-bold text-center mb-10">Student Learning Outcomes</p>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="slo-card h-[300px] rounded-[2rem] p-10 flex flex-col justify-center items-center text-center" onclick="openSLO('mwa2-slo1')">
@@ -638,26 +609,221 @@
             </div>
         </section>
 
-        <!-- ── MWA 3 ── -->
+        <!-- ════════════════════════════════
+             MWA 3: DISCOURSE COMMUNITY PROFILE
+        ════════════════════════════════ -->
         <section id="mwa3">
-            <h2 class="font-serif text-5xl text-gray-900 mb-16">MWA 3</h2>
+            <h2 class="font-serif text-5xl text-gray-900 mb-16">MWA 3: Discourse Community Profile</h2>
+
+            <div class="max-w-3xl mx-auto mb-20">
+
+                <!-- SOGC -->
+                <div class="sogc-box">
+                    <span class="label">Statement of Goals and Choices</span>
+                    <p>
+                        The goal of this project was to profile a real individual in a way that also reveals the values, structure, and identity of the individual's discourse community. I didn't want to just show the person, but how their experiences are representative of something larger — how community, language, and shared practices inform identity and belonging. I think the piece does this by mixing personal narrative with interview and observation, so the audience can see the individual point of view and the larger context at the same time.
+                    </p>
+                    <p>
+                        My audience is my instructor, my classmates, and anyone who has an interest in knowing how communities work from the inside. That's why I chose the medium I did — because I wanted something more direct and human than just text. The multimodal format (audio/podcast style) made sense because tone, pauses, and voice carry meaning in a way that writing alone cannot. The project is about a real person and a real lived experience, so there's an immediacy and authenticity to hearing their voice — or something like that effect — in the profile.
+                    </p>
+                    <p>
+                        Rhetorically, my major choices were a balancing act: individual versus community, personal tone versus analytical clarity, storytelling versus structure. I had to think carefully about what to include and what to leave out so that the piece stayed focused without feeling incomplete. I took a conversational tone, but kept it purposeful — I didn't want the audience to feel distant from the subject. The technology pushed me to think about how transitions <em>sounded</em>, not just how they read, which clarified the piece in ways that traditional writing alone wouldn't have.
+                    </p>
+                </div>
+
+                <!-- Title -->
+                <h3 class="font-serif text-3xl text-gray-800 mb-2 text-center">Leadership as a Living Practice</h3>
+                <p class="text-center text-gray-400 italic mb-8">A Discourse Community Profile — Childcare Education</p>
+                <div class="w-24 h-px bg-primary mx-auto mb-12"></div>
+
+                <!-- Overview / Profile Introduction -->
+                <div class="profile-text mb-12">
+                    <p>
+                        This profile is built around <span class="profile-subject">Marissa</span>, a site director in an educational youth program who manages children ages five through twelve, leads a team of staff, and participates in multiple institutional circles focused on equity, professional development, and community belonging. The profile is meant to do more than introduce her. It is also meant to examine the larger discourse community she operates within — one grounded in mentorship, structure, emotional awareness, and the kind of daily, in-person work that rarely appears in formal job descriptions.
+                    </p>
+                    <p>
+                        The argument at the center of this profile is simple but worth stating clearly: leadership in a childcare setting is not primarily about authority or administration. It depends on emotional intelligence, adaptability, and the constant, unspoken work of reading a room — especially a room full of children. Marissa demonstrates how this kind of work is simultaneously a job and a relationship, where communication, patience, and consistency don't just support the environment — they <em>are</em> the environment.
+                    </p>
+                </div>
+
+                <!-- Discourse Community Analysis -->
+                <h4 class="review-subhead">Inside the Community</h4>
+                <div class="profile-text mb-12">
+                    <p>
+                        The discourse community Marissa belongs to is defined by several features that go beyond any single workplace. Its members share common goals — helping students grow, stay safe, and learn — but the ways those goals are pursued are deeply social and contextual. Staff meetings, one-on-ones with families, in-the-moment behavioral interventions, and collaborative curriculum planning all function as communicative acts within a shared system of meaning. Even the language itself is distinctive: terms like "behavior cues," "structured routines," "positive guidance," and "developmental milestones" form a professional lexis that insiders use naturally and that marks membership in the community.
+                    </p>
+                    <p>
+                        The genres of this community are equally revealing. Lesson plans and daily schedules carry the formal weight of institutional expectation. Incident reports document moments that demand accountability. But alongside these, informal mentoring conversations — the kind that happen in hallways, during transitions, over a snack table — do just as much work in transmitting the community's values. Marissa moves across all of these registers with fluency, which is itself a marker of expertise.
+                    </p>
+                    <p>
+                        What makes this particular discourse community worth profiling is the degree to which emotional labor is both central and underacknowledged. The children are developing their identities, their social skills, and their sense of belonging in real time. The adults who work with them must be consistent, regulated, and present — often under conditions of significant stress and with limited institutional support. The community sustains itself not through formal credentialing alone, but through a shared ethic of showing up fully and with intention.
+                    </p>
+                </div>
+
+                <!-- ── INTERVIEW SECTION ── -->
+                <h4 class="review-subhead">Interview Insights</h4>
+                <p class="profile-text text-sm text-gray-500 mb-8 -mt-4" style="font-style: italic;">
+                    The following conversation with Marissa offers a window into how this discourse community is lived from the inside — its pressures, its rewards, and the values that hold it together.
+                </p>
+
+                <div class="interview-block">
+
+                    <div class="qa-pair">
+                        <p class="qa-question">Can you tell me a little about your role and what you do day to day?</p>
+                        <p class="qa-answer">I am a childcare director who manages, trains, and works hands-on with adults and children ages 5–12. My job goes beyond meetings — it includes planning curriculum, evaluating staff, creating systems for the program, and training staff both during and outside program hours. I also dedicate time to accomplishing and creating training events, belonging events, and systems to keep staff on track with their learning and career path. As a member of the Diversity, Equity and Inclusion, Community and Culture and Care, Professional Development, and Training Circles, there's always another layer. And beyond all the scheduling, emails, licensing protocols, snack prep, and purchasing, I also get to work hand in hand with families and kids — playing, learning, advocating, and facilitating positive development.</p>
+                    </div>
+
+                    <div class="qa-pair">
+                        <p class="qa-question">What got you into this field or community?</p>
+                        <p class="qa-answer">My educational background is a hodgepodge — a BA in Psychology, a minor in Population Health, some experience as an EMT, coaching, and currently a certificate in Human Resources. I've always valued working with people in different ways, and at 18 I made a decision to shift my passion toward being an active advocate for children. My childcare experience started with early childhood, working with ages 6 weeks to 12. Moving into school-age was an eye-opener. The kids were developing their own personalities, sense of style, and awareness of their identity, which made the learning more engaging and enriching.</p>
+                    </div>
+
+                    <div class="qa-pair">
+                        <p class="qa-question">What have you learned from your experience over time?</p>
+                        <p class="qa-answer">My biggest lesson is that mistakes and failure are fundamental moments that offer the biggest opportunity for learning — and in order to let that learning happen, you have to allow time and space for yourself to reflect and then adapt. Growth isn't linear. It asks you to sit with discomfort before it gives you clarity.</p>
+                    </div>
+
+                    <div class="qa-pair">
+                        <p class="qa-question">What's been one of the biggest challenges for you?</p>
+                        <p class="qa-answer">The emotional exhaustion that comes with working with children. Burnout in this field is a huge reason why educators don't last, and our current society doesn't value this front-line work the way it values other essential jobs. You give a lot of yourself every day, and that cost isn't always visible to people outside the field.</p>
+                    </div>
+
+                    <div class="qa-pair">
+                        <p class="qa-question">Is there a moment that really stands out to you?</p>
+                        <p class="qa-answer">Working with kids offers so many "aha" moments, but I think my biggest comes from being a mom. Being able to shift perspectives as both an educator and a mother helps me relate better with families and creates a new level of trust. That dual lens changed how I see almost everything in this work.</p>
+                    </div>
+
+                    <div class="qa-pair">
+                        <p class="qa-question">How do you usually communicate or connect with others in your space?</p>
+                        <p class="qa-answer">Most of my work is very in-person centered. One-on-ones, family nights, staff meetings, trainings — they all involve personal connection to be successful. The work doesn't translate well to a screen. It lives in the room, in the moment, in the relationships.</p>
+                    </div>
+
+                    <div class="qa-pair">
+                        <p class="qa-question">What skills do you think are most important in what you do?</p>
+                        <p class="qa-answer">Patience, compassion, empathy, advocacy, listening, and motivation. In that order, or in any order — they all matter equally depending on the day.</p>
+                    </div>
+
+                    <div class="qa-pair">
+                        <p class="qa-question">How do you handle stressful or difficult moments?</p>
+                        <p class="qa-answer">Being able to stay calm and regulate my emotions is the biggest part. Taking a deep breath, being transparent and honest — those are the tools I rely on most. Allowing myself grace and embracing my feelings helps me feel like I don't have to be the only one bearing the stress. You model regulation for the kids by actually practicing it yourself.</p>
+                    </div>
+
+                    <div class="qa-pair">
+                        <p class="qa-question">What would you say to someone starting out?</p>
+                        <p class="qa-answer">Allow yourself to fail, and instead of beating yourself up about it, learn from it, grow from it, and never let those moments define who you are or what you're capable of. The field will test you. Your relationship with failure determines whether you stay.</p>
+                    </div>
+
+                    <div class="qa-pair">
+                        <p class="qa-question">Is there anything else you'd want people to understand about your work?</p>
+                        <p class="qa-answer">Being an educator in the childcare setting has a lot to offer. It helps you gain perspective on just how much impact we have in a child's life. Showing up as your whole self — with good intentions — can change a child's life forever. That one moment matters.</p>
+                    </div>
+
+                </div><!-- /interview-block -->
+
+                <!-- Footnote -->
+                <div class="interview-footnote">
+                    <strong>Note on Method</strong>
+                    Due to scheduling constraints, this interview was conducted asynchronously. Questions were sent in advance, and responses were provided in written form by the interviewee. Full copies of the original written responses are available upon request.
+                </div>
+
+                <!-- ── MULTIMODAL COMPONENT ── -->
+                <h4 class="review-subhead" style="margin-top: 4rem;">Multimodal Component</h4>
+                <p class="profile-text text-sm text-gray-500 mb-6" style="font-style: italic;">
+                    This project was produced in podcast format — combining voiceover narration with soft ambient sound to create a sense of place and presence.
+                </p>
+
+                <!-- 
+                    AUDIO EMBED INSTRUCTIONS:
+                    When your audio file is ready, replace the multimodal-block below with:
+
+                    <div class="multimodal-block">
+                        <div class="audio-embed">
+                            <audio controls>
+                                <source src="YOUR-AUDIO-FILE.mp3" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                        <p class="multimodal-caption">
+                            <em>Podcast Profile: Leadership as a Living Practice</em> — A discourse community profile
+                            of Marissa, site director in an educational youth program. Runtime: [X] min.
+                        </p>
+                    </div>
+
+                    For now, the placeholder below is shown.
+                -->
+
+                <div class="multimodal-block">
+                    <div class="multimodal-inner">
+                        <div class="multimodal-icon">
+                            <!-- Headphones icon -->
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 18v-6a9 9 0 0 1 18 0v6"/>
+                                <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>
+                            </svg>
+                        </div>
+                        <p class="multimodal-label">Podcast Profile</p>
+                        <p class="multimodal-title">Leadership as a Living Practice</p>
+                        <p class="multimodal-desc">
+                            The audio component of this project is in production. It combines voiceover narration with low ambient sound — quiet classroom texture, movement, presence — to situate the listener inside the environment without distracting from Marissa's perspective.
+                        </p>
+                        <p style="font-size: 0.75rem; color: #c5c0ba; font-style: italic;">Audio file will be embedded here once finalized.</p>
+                    </div>
+                    <p class="multimodal-caption">
+                        <em>Podcast Profile — Discourse Community: Childcare Education Leadership.</em>
+                        Narration layered with ambient sound to reflect the tone and setting of the community being profiled.
+                    </p>
+                </div>
+
+                <!-- ── SLO REFLECTION (inline) ── -->
+                <h4 class="review-subhead" style="margin-top: 4rem;">SLO Reflection — MWA 3</h4>
+
+                <div class="slo-reflection-block">
+                    <h4>Writing as a Social Act</h4>
+                    <p>
+                        Writing as a Social Act is directly relevant to this project because the profile I am writing is about a real person embedded in a real community. I wasn't writing in a vacuum — I was writing in response to the experience, language, and perspective of another person. The interview gave me insight into how communication, shared values, and community practices shape professional identity. This allowed me to move beyond simply describing Marissa and instead show how she operates within a larger system — one with its own conventions, pressures, and shared meaning.
+                    </p>
+                    <p>
+                        It also made me more attentive to how discourse communities function at the local level: how they maintain contact, develop their own lexis, and create spaces for participation. I came to understand that writing is not an individual act of expression but something made through interaction, relationships, and the meaning that accumulates between people over time.
+                    </p>
+                </div>
+
+                <div class="slo-reflection-block">
+                    <h4>Writing as a Process</h4>
+                    <p>
+                        This project was not a single draft — it was a process of several stages: brainstorming, interviewing, drafting, revising, and organizing multimodal elements. The interview itself became the anchor for everything else, helping to guide the direction and depth of the profile in ways I hadn't anticipated when I started. I had to adjust my structure more than once to find a better balance between narrative and analysis.
+                    </p>
+                    <p>
+                        Feedback from peers helped me identify where clarity was missing — especially in how I connected Marissa's individual experience to the broader community she belongs to. Working in a multimodal format added another layer of complexity: pacing, transitions, and presentation all became writerly decisions, not just technical ones. That added difficulty was also the thing that made the project feel most intentional. The best part of the whole process was discovering that different elements — audio, narration, structure, tone — could work together rather than compete.
+                    </p>
+                </div>
+
+            </div><!-- /max-w-3xl -->
+
+            <div class="section-divider"></div>
+
+            <!-- SLO Cards -->
+            <p class="font-sans text-[10px] tracking-[0.4em] uppercase text-gray-400 font-bold text-center mb-10">Student Learning Outcomes</p>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="slo-card h-[300px] rounded-[2rem] p-10 flex flex-col justify-center items-center text-center" onclick="openSLO('mwa3-slo1')">
-                    <span class="text-6xl font-light text-gray-200 mb-4 font-serif">01</span>
+                    <span class="text-6xl font-light text-gray-300 mb-4 font-serif">01</span>
                     <h4 class="font-serif text-2xl text-gray-800 mb-2">SLO 1</h4>
-                    <span class="text-xs text-gray-300 uppercase tracking-widest">Coming soon</span>
+                    <p class="text-gray-400 text-sm">Writing as a Social Act</p>
+                    <span class="mt-6 text-xs text-primary uppercase tracking-widest">Read reflection →</span>
                 </div>
                 <div class="slo-card h-[300px] rounded-[2rem] p-10 flex flex-col justify-center items-center text-center" onclick="openSLO('mwa3-slo2')">
-                    <span class="text-6xl font-light text-gray-200 mb-4 font-serif">02</span>
+                    <span class="text-6xl font-light text-gray-300 mb-4 font-serif">02</span>
                     <h4 class="font-serif text-2xl text-gray-800 mb-2">SLO 2</h4>
-                    <span class="text-xs text-gray-300 uppercase tracking-widest">Coming soon</span>
+                    <p class="text-gray-400 text-sm">Writing as a Process</p>
+                    <span class="mt-6 text-xs text-primary uppercase tracking-widest">Read reflection →</span>
                 </div>
                 <div class="slo-card h-[300px] rounded-[2rem] p-10 flex flex-col justify-center items-center text-center" onclick="openSLO('mwa3-slo3')">
-                    <span class="text-6xl font-light text-gray-200 mb-4 font-serif">03</span>
+                    <span class="text-6xl font-light text-gray-300 mb-4 font-serif">03</span>
                     <h4 class="font-serif text-2xl text-gray-800 mb-2">SLO 3</h4>
-                    <span class="text-xs text-gray-300 uppercase tracking-widest">Coming soon</span>
+                    <p class="text-gray-400 text-sm">Rhetorical Knowledge</p>
+                    <span class="mt-6 text-xs text-primary uppercase tracking-widest">Read reflection →</span>
                 </div>
             </div>
+
         </section>
 
     </main>
@@ -684,6 +850,7 @@
 
     <script>
         const sloData = {
+            /* ── MWA 1 ── */
             'mwa1-slo1': {
                 label: 'MWA 1 — SLO 1',
                 title: 'Rhetorical Knowledge',
@@ -702,6 +869,8 @@
                 body: `<p>This project required me to think critically about what sensitivity actually means and how it functions in the world. Rather than accepting the cultural narrative that sensitivity is weakness, I had to investigate my own experiences and ask deeper questions: What does strength actually look like? How does emotional awareness serve me? What am I trying to argue?</p>
                 <p>By working with children and observing how my sensitivity allowed me to connect with them, I was able to gather evidence for my argument. This taught me that critical thinking isn't just abstract — it's grounded in observation, reflection, and the willingness to challenge assumptions, including my own.</p>`
             },
+
+            /* ── MWA 2 ── */
             'mwa2-slo1': {
                 label: 'MWA 2 — SLO 1',
                 title: 'Rhetorical Situation & Genre',
@@ -718,6 +887,26 @@
                 title: 'Critical Thinking & Inquiry',
                 body: `<p>This assignment pushed me to think critically about what makes a place valuable. Tingley Beach isn't flashy or famous, so I had to ask: What does it actually offer? Why is subtlety worth writing about? How do I convince someone that stillness has value in a culture that prizes entertainment and stimulation?</p>
                 <p>I also had to think critically about my own biases and assumptions. I had to question whether I was being honest about the place's limitations, or whether I was romanticizing it. That critical distance — the willingness to acknowledge both strengths and weaknesses — made the review more credible and more interesting.</p>`
+            },
+
+            /* ── MWA 3 ── */
+            'mwa3-slo1': {
+                label: 'MWA 3 — SLO 1',
+                title: 'Writing as a Social Act',
+                body: `<p>Writing as a Social Act is directly relevant to this project because the profile I am writing is about a real person embedded in a real community. I wasn't writing in a vacuum — I was writing in response to the experience, language, and perspective of another person. The interview gave me insight into how communication, shared values, and community practices shape professional identity.</p>
+                <p>This allowed me to move beyond simply describing Marissa and instead show how she operates within a larger system — one with its own conventions, pressures, and shared meaning. I came to understand that writing is not an individual act of expression but something made through interaction, relationships, and the meaning that accumulates between people over time. The discourse community exists in part because people keep writing it into existence — through lesson plans, conversations, mentoring moments, and the stories they tell about their own work.</p>`
+            },
+            'mwa3-slo2': {
+                label: 'MWA 3 — SLO 2',
+                title: 'Writing as a Process',
+                body: `<p>This project was not a single draft — it was a process of several stages: brainstorming, interviewing, drafting, revising, and organizing multimodal elements. The interview itself became the anchor for everything else, helping to guide the direction and depth of the profile in ways I hadn't anticipated when I started. I had to adjust my structure more than once to find a better balance between narrative and analysis.</p>
+                <p>Feedback from peers helped me identify where clarity was missing — especially in how I connected Marissa's individual experience to the broader community she belongs to. Working in a multimodal format added another layer of complexity: pacing, transitions, and presentation all became writerly decisions, not just technical ones. That added difficulty was also the thing that made the project feel most intentional. The best part of the whole process was discovering that different elements — audio, narration, structure, tone — could work together rather than compete.</p>`
+            },
+            'mwa3-slo3': {
+                label: 'MWA 3 — SLO 3',
+                title: 'Rhetorical Knowledge',
+                body: `<p>This project deepened my understanding of how rhetorical choices shape not just what is communicated, but how it is received. Choosing a podcast format meant thinking about audience in a more immediate way — tone, pacing, and the rhythm of narration all carry rhetorical weight that text alone doesn't have to manage. I had to decide what to foreground and what to leave implicit, knowing that silence and ambient sound could do work that words couldn't.</p>
+                <p>The balancing act between personal narrative and analytical clarity was the central rhetorical challenge. A discourse community profile has to be engaging enough to hold attention while being rigorous enough to demonstrate genuine analysis. I tried to let the interview speak for itself where Marissa's words were strongest, and to use narration to contextualize rather than explain. Restraint, I've come to believe, is its own rhetorical strategy — and this project gave me the most sustained practice of it yet.</p>`
             }
         };
 
