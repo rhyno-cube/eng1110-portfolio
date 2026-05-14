@@ -306,6 +306,43 @@
             color: #7a8b94;
         }
 
+        /* ════════════════════════════
+           HOMEPAGE — LEARNING PLAN
+        ════════════════════════════ */
+        .home-prose { line-height: 2; font-size: 1.1rem; color: #334155; }
+        .home-prose p { margin-bottom: 1.5rem; }
+        .home-prose p:first-of-type::first-letter {
+            font-size: 4rem; float: left; line-height: 0.8;
+            padding-right: 0.5rem; color: #7a8b94; font-family: 'Cormorant Garamond', serif;
+        }
+        .home-subhead {
+            font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 500;
+            font-style: italic; color: #333; margin: 3.5rem 0 1.25rem;
+            padding-bottom: 0.5rem; border-bottom: 1px solid #e2e6e9;
+        }
+        .home-kicker {
+            font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase;
+            color: #7a8b94; font-weight: 700; display: block; margin-bottom: 1.25rem;
+        }
+        .slo-list { margin: 1.5rem 0 2rem; padding: 0; list-style: none; }
+        .slo-list li {
+            padding: 1rem 1.25rem; margin-bottom: 0.75rem;
+            background: rgba(122,139,148,0.04);
+            border-left: 2px solid #d1d5db;
+            font-size: 0.985rem; line-height: 1.85; color: #475569;
+            transition: border-color 0.3s ease;
+        }
+        .slo-list li:hover { border-color: #7a8b94; }
+        .slo-list li strong {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-weight: 500;
+            color: #334155;
+            font-size: 1.05rem;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
         html { scroll-behavior: smooth; }
     </style>
 </head>
@@ -316,7 +353,7 @@
         <div class="max-w-7xl mx-auto px-10 h-24 flex justify-between items-center">
             <span class="text-xl font-bold tracking-tight text-gray-900 font-serif">My Portfolio</span>
             <div class="flex space-x-12 text-[11px] uppercase tracking-[0.25em] font-bold text-gray-400">
-                <a href="#" class="hover:text-gray-900 transition-colors">Home</a>
+                <a href="#home" class="hover:text-gray-900 transition-colors">Home</a>
 
                 <div class="nav-item relative group">
                     <span class="cursor-default group-hover:text-gray-900 transition-colors">MWA 1</span>
@@ -367,6 +404,81 @@
             <p class="mt-12 text-[12px] tracking-[0.4em] uppercase text-gray-400 font-bold">— William Zinsser</p>
         </div>
     </section>
+
+    <!-- ════════════════════════════
+         HOMEPAGE — LEARNING PLAN
+    ════════════════════════════ -->
+    <section id="home" class="max-w-3xl mx-auto px-10 pt-32 pb-20">
+
+        <p class="font-sans text-[10px] tracking-[0.4em] uppercase text-gray-400 font-bold text-center mb-6">A Little About Me</p>
+        <h2 class="font-serif text-5xl text-gray-900 mb-4 text-center">Learning Plan</h2>
+        <p class="text-center text-gray-400 italic mb-4">A reflection on where I came from, where I am, and where I'm going</p>
+        <div class="w-24 h-px bg-primary mx-auto mb-16"></div>
+
+        <article class="home-prose">
+
+            <p>
+                My name is Bryan Ruano Rivera, and this portfolio is the record of a semester I didn't expect to learn so much from. I came into ENG 1110 thinking of writing as a task to finish. I'm leaving the course thinking of it as a way of paying attention. Each of the three major writing assignments asked me to notice something different: my own emotional history, a quiet place in my city, and the working life of a person whose labor often goes unseen. This homepage is where I put that shift into words — where I started, what changed, and where I want to take it from here.
+            </p>
+
+            <span class="home-kicker">Part One</span>
+            <h3 class="home-subhead">Where I Came From</h3>
+
+            <p>
+                On the first day of class I had the kind of confidence that doesn't survive long contact with real feedback. I'd been told I was a "strong writer" in high school, which mostly meant I could produce a clean five-paragraph essay on demand. I was comfortable with grammar and with sounding academic. What I wasn't comfortable with was uncertainty — sitting in a draft that wasn't working, or writing about something personal without armoring it in formal distance. I confused revision with editing, and assumed audience meant one person: the teacher with the rubric. I was also skeptical of "multimodal" writing — I thought visuals, audio, and design were decorative things you added at the end. I didn't yet understand that format is part of an argument, or that white space, pacing, and tone of voice can carry meaning sentences alone can't reach. That assumption is the one this course has done the most to dismantle.
+            </p>
+
+            <span class="home-kicker">Part Two</span>
+            <h3 class="home-subhead">Where I Am Now</h3>
+
+            <p>
+                Three projects later, I write differently. The memoir taught me that vulnerability can be an argument. The Tingley Beach review taught me that restraint is a rhetorical choice. The profile of Marissa taught me that writing is something people do <em>with</em> each other, not just to each other. I feel most confident now in pieces that balance personal voice with analytical clarity, and more comfortable in digital environments — I composed and deployed this portfolio site, which a year ago I wouldn't have thought of as "writing" at all. Below is how I worked toward each of the UNM outcomes this semester.
+            </p>
+
+            <ul class="slo-list">
+                <li>
+                    <strong>A. Rhetorical Situation and Genre</strong>
+                    My MWA 2 review of Tingley Beach was the clearest practice here. I had to think about audience (someone unfamiliar with the place), purpose (to slow them down rather than sell them on it), and genre conventions (the review form, with its mix of evaluation and narrative). I kept promotional language out and let visuals carry mood. The Statement of Goals and Choices on MWA 2 documents that thinking directly.
+                </li>
+                <li>
+                    <strong>B. Writing as a Social Act</strong>
+                    MWA 3 is built entirely around this outcome. I interviewed a real person inside a real community and had to learn its lexis ("behavior cues," "structured routines," "positive guidance") and its genres (lesson plans, incident reports, hallway mentoring) before I could write about it honestly. The project showed me that writing accrues meaning between people over time, not in isolation.
+                </li>
+                <li>
+                    <strong>C. Writing as a Process</strong>
+                    Every project here went through brainstorming, drafting, peer review, and revision — but the memoir was where process mattered most. It started as scattered fragments about being told I was "too emotional" and became, through several drafts, a controlled argument that reframes sensitivity as strength. Peer feedback pushed me to cut decorative language and trust restraint.
+                </li>
+                <li>
+                    <strong>D. Grammar and Usage</strong>
+                    Sentence-level work showed up in every revision pass, but it was most visible in MWA 2, where I had to keep prose quiet and unhurried. I worked on varying sentence rhythm, trimming filler, and letting register shift without breaking voice. Reading aloud became part of how I edited.
+                </li>
+                <li>
+                    <strong>E. Reflection</strong>
+                    The SLO reflection cards on each MWA page are formal evidence of this outcome, but the larger work has been writing this Learning Plan and the Statements of Goals and Choices on MWA 2 and MWA 3. Naming what I chose, and why, is the single most useful habit I'm taking out of the course.
+                </li>
+                <li>
+                    <strong>F. Research</strong>
+                    MWA 2 required me to integrate outside sources — the Kaplans on attention restoration, the City of Albuquerque parks documentation, the NM Urban Fishing Program — into a piece that is mostly experiential. I had to cite them ethically without letting them flatten the writing. MWA 3 added a different kind of research: a primary-source interview, which taught me that listening carefully is itself a method.
+                </li>
+            </ul>
+
+            <span class="home-kicker">Part Three</span>
+            <h3 class="home-subhead">Where I'm Heading</h3>
+
+            <p>
+                The areas I still need to work on are the ones this course only began to open up. I want to engage with opposing perspectives more directly — I tend to acknowledge counterarguments and move past them, when the stronger move is to sit inside the disagreement longer. I want to keep developing as a researcher, especially in finding sources that aren't already aligned with what I want to say. And I'd like to do more with multimodal composition: the audio component of MWA 3 is still in production, and finishing it carefully is one of my immediate goals.
+            </p>
+            <p>
+                Of the six outcomes, the ones I most want to keep working on are Rhetorical Situation and Genre, Writing as a Social Act, and Research. These will be my priorities next semester. To improve, I plan to keep using the SOGC habit of naming choices before I make them, seek feedback earlier in the drafting process, and use the UNM Writing Center more consistently. I'll know I've improved when I can read my own first drafts without immediately wanting to flatten the strange or honest parts out of them.
+            </p>
+            <p>
+                Beyond this class, writing will play a role in everything I'm planning to do. I'm pursuing psychology, and the disciplines I care about most — abnormal psychology, neurobiology, mental health law — are fields where the quality of your writing is the quality of your thinking. I'll be writing research proposals, case studies, literature reviews, and eventually clinical documents where clarity is not stylistic but ethical. The habits I've started building — paying attention to audience, treating revision as discovery, taking multimodal choices seriously, and respecting the social context of what I'm writing into — are exactly the habits those future contexts will demand. What this course actually taught me wasn't how to write a specific kind of essay. It was how to notice, on purpose, what writing is doing.
+            </p>
+
+        </article>
+    </section>
+
+    <div class="section-divider"></div>
 
     <!-- ── Main Content ── -->
     <main class="max-w-7xl mx-auto px-10 py-40 space-y-60">
@@ -771,29 +883,6 @@
                     <p class="multimodal-caption">
                         <em>Podcast Profile — Discourse Community: Childcare Education Leadership.</em>
                         Narration layered with ambient sound to reflect the tone and setting of the community being profiled.
-                    </p>
-                </div>
-
-                <!-- ── SLO REFLECTION (inline) ── -->
-                <h4 class="review-subhead" style="margin-top: 4rem;">SLO Reflection — MWA 3</h4>
-
-                <div class="slo-reflection-block">
-                    <h4>Writing as a Social Act</h4>
-                    <p>
-                        Writing as a Social Act is directly relevant to this project because the profile I am writing is about a real person embedded in a real community. I wasn't writing in a vacuum — I was writing in response to the experience, language, and perspective of another person. The interview gave me insight into how communication, shared values, and community practices shape professional identity. This allowed me to move beyond simply describing Marissa and instead show how she operates within a larger system — one with its own conventions, pressures, and shared meaning.
-                    </p>
-                    <p>
-                        It also made me more attentive to how discourse communities function at the local level: how they maintain contact, develop their own lexis, and create spaces for participation. I came to understand that writing is not an individual act of expression but something made through interaction, relationships, and the meaning that accumulates between people over time.
-                    </p>
-                </div>
-
-                <div class="slo-reflection-block">
-                    <h4>Writing as a Process</h4>
-                    <p>
-                        This project was not a single draft — it was a process of several stages: brainstorming, interviewing, drafting, revising, and organizing multimodal elements. The interview itself became the anchor for everything else, helping to guide the direction and depth of the profile in ways I hadn't anticipated when I started. I had to adjust my structure more than once to find a better balance between narrative and analysis.
-                    </p>
-                    <p>
-                        Feedback from peers helped me identify where clarity was missing — especially in how I connected Marissa's individual experience to the broader community she belongs to. Working in a multimodal format added another layer of complexity: pacing, transitions, and presentation all became writerly decisions, not just technical ones. That added difficulty was also the thing that made the project feel most intentional. The best part of the whole process was discovering that different elements — audio, narration, structure, tone — could work together rather than compete.
                     </p>
                 </div>
 
